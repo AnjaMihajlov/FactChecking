@@ -1,2 +1,13 @@
-6.2.Lana i Anja napravile git repo
+6.2. Lana i Anja napravile git repo
 6.2. Dodato 50 pitanja sa odgovorom i izvorom
+7.2. Filip dodao na git kod za citanje pitanja i upisivanje odgovora u fajl
+8.2. Ana testirala kod i izmenila da radi kako treba 
+    - dodala fajl "precision_log.txt" u koji ce se upisivati istorija svih procenata tacnosti koja se dobijala nakon svakog pokretanja koda, umesto kolone u csv fajlu 
+    - fajl template_pitanja.xlsx exportovan kao csv fajl "data_base.csv", sa sledecim izmenama: kolona Linkovi je ostavljena da bude prazna, da se tu upisuju linkovi koje AI nadje, a svi linkovi iz te kolone su prebaceni u kolonu "Linkovi za referencu"; obrisana kolona Procenat tacnosti, jer je to prebaceno u fajl "precision_log.txt"
+    - bolje je da se ne radi jos uvek sa celom bazom pitanja koja imamo, da ne bismo trosili tokene API-ja, vec da delove baze testiramo kroz fajl "data.csv"
+    - preporuka je da sve pisemo na engleskom (komentare i nazive u kodu), jer je dati kod vec napisan na engleskom
+
+API kljucevi:
+    OPENROUTER_API_KEY = "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"
+    SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
+    JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
