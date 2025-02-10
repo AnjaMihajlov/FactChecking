@@ -380,27 +380,26 @@ async def async_main(user_query, session):
 DEFAULT_ITERATION = 2
 LINKS_LIMIT = 5
 
-# File constants
 QUERY_INDEX = 0
 ANSWER_INDEX = 1
 EXPECTED_INDEX = 2
 PRECISION_INDEX = 3
 LINKS_INDEX = 4
-PATH_SPEECH =".\\speeches\\"
-SPEECH_FILE_NAME= "govor_vucic_izbori_2017.txt"
 
+PATH_SPEECH =".\\speeches\\"
+SPEECH_FILE_NAME= "govor_vucic_izbori_2017.txt"     # Change SPEECH_FILE_NAME when reading new text
 PATH_TO_TEXT = PATH_SPEECH + SPEECH_FILE_NAME
 
 PATH_DATA = ".\\data\\"     
-CSV_FILE_NAME = "new_data.csv"
+CSV_FILE_NAME = "data_jagodina.csv"                 # Change CSV_FILE_NAME when writing a new one
 PATH_TO_CSV_FILE = PATH_DATA + CSV_FILE_NAME
 
 PATH_PRECISION = ".\\precision\\"
-LOG_FILE_NAME = "precision_log.txt"
+LOG_FILE_NAME = "precision_log.txt"                  # Don't change
 PATH_TO_LOG_FILE = PATH_PRECISION + LOG_FILE_NAME
 
 PATH_QUESTIONS = ".\\questions\\"
-QUESTIONS_FILE_NAME = "izdvojena_pitanja_jagodina.txt"
+QUESTIONS_FILE_NAME = "izdvojena_pitanja_jagodina.txt"              # Change QUESTIONS_FILE_NAME when reading from a new example
 PATH_TO_QUESTIONS_FILE = PATH_QUESTIONS + QUESTIONS_FILE_NAME
 
 HEADER = "Pitanje, Odgovor, Očekivan odgovor, Tačnost, Linkovi, Likovi za referencu\n"
