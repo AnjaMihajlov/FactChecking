@@ -8,7 +8,7 @@ import csv
 # =======================
 # Configuration Constants
 # =======================
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
 JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
 
@@ -465,7 +465,7 @@ def main():
     input_file, queries = read_file(PATH_TO_CSV_FILE)
     print("Pitanja: ",queries)
     results, links_used = asyncio.run(process_queries(queries))
-    write_results(PATH_TO_CSV_FILE, LOG_FILE_NAME, results, input_file, links_used)
+    write_results(PATH_TO_CSV_FILE, PATH_TO_LOG_FILE, results, input_file, links_used)
 
 
 if __name__ == "__main__":
