@@ -7,6 +7,7 @@
     - bolje je da se ne radi jos uvek sa celom bazom pitanja koja imamo, da ne bismo trosili tokene API-ja, vec da delove baze testiramo kroz fajl "data.csv"
     - preporuka je da sve pisemo na engleskom (komentare i nazive u kodu), jer je dati kod vec napisan na engleskom
 11.2 Filip i Ana napravili helper_questions_from_text.py fajl
+16.2. Anja i Lana završile svoj deo i potrošile tokene :(
 
 API kljucevi:
     OPENROUTER_API_KEY = "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"
