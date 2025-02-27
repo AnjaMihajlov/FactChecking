@@ -9,8 +9,9 @@ import csv
 # =======================
 # Configuration Constants
 # =======================
-OPENROUTER_API_KEY_1 = "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"
-OPENROUTER_API_KEY_2 = "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"
+OPENROUTER_API_KEY = "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"
+
+
 SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
 JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
 
@@ -20,8 +21,43 @@ SERPAPI_URL = "https://serpapi.com/search"
 JINA_BASE_URL = "https://r.jina.ai/"
 
 # Default LLM model (can be changed if desired)
-DEFAULT_MODEL = "anthropic/claude-3.5-haiku"
+DEFAULT_MODEL = "anthropic/claude-3.7-sonnet"
+# DEFAULT_MODEL = "openai/gpt-4o-2024-11-20"
 # DEFAULT_MODEL = "gpt-3.5-turbo"
+
+
+#Limits for search
+DEFAULT_ITERATION = 2
+LINKS_LIMIT = 5
+
+QUERY_INDEX = 0
+ANSWER_INDEX = 1
+EXPECTED_INDEX = 2
+PRECISION_INDEX = 3
+RIGHT_ANSWER_INDEX = 4
+LINKS_INDEX = 5
+
+PATH_SPEECH =".\\speeches\\"
+SPEECH_FILE_NAME= "govor_vucic_sm.txt"     # Change SPEECH_FILE_NAME when reading new text
+PATH_TO_SPEECH_FILE = PATH_SPEECH + SPEECH_FILE_NAME
+
+PATH_DATA = ".\\data\\"     
+CSV_FILE_NAME = "data_sm.csv"                 # Change CSV_FILE_NAME when writing a new one
+PATH_TO_CSV_FILE = PATH_DATA + CSV_FILE_NAME
+
+PATH_PRECISION = ".\\precision\\"
+LOG_FILE_NAME = "precision_log.txt"                  # Don't change
+PATH_TO_LOG_FILE = PATH_PRECISION + LOG_FILE_NAME
+
+PATH_QUESTIONS = ".\\questions\\"
+QUESTIONS_FILE_NAME = "miting_sremska_mitrovica.txt"              # Change QUESTIONS_FILE_NAME when reading from a new example
+PATH_TO_QUESTIONS_FILE = PATH_QUESTIONS + QUESTIONS_FILE_NAME
+
+HEADER = "Pitanje, Odgovor, Očekivan odgovor, Tačnost, Tačan odgovor, Linkovi, Likovi za referencu\n"
+
+SPEAKER = "Aleksadar Vučić" #Bice ucitano iz JSON-a
+DATE = "15.02.2025"
+
 
 # ============================
 # Asynchronous Helper Functions
@@ -33,7 +69,7 @@ async def call_openrouter_async(session, messages, model=DEFAULT_MODEL):
     Returns the content of the assistant’s reply.
     """
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY_1}",
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "X-Title": "OpenDeepResearcher, by Matt Shumer",
         "Content-Type": "application/json"
     }
@@ -147,7 +183,8 @@ async def is_page_useful_async(session, user_query, page_text):
     """
     prompt = (
         "You are a critical research evaluator. Given the user's query and the content of a webpage, "
-        "determine if the webpage contains information relevant and useful for addressing the query. "
+        "determine if the webpage contains information relevant and useful for addressing the query. Also, keep in mind that tabloid information is not relevant, such as from sites:"
+        "'informer', 'kurir', 'blic', 'pink.rs', 'happy.rs', 'alo', 'srpski telegraf', 'vecernje novosti', 'republika.rs', 'objektiv.rs', 'espreso.rs', 'politika.rs', 'pravda.rs', 'glas-javnosti' and alike sites."
         "Respond with exactly one word: 'Yes' if the page is useful, or 'No' if it is not. Do not include any extra text."
     )
     messages = [
@@ -253,8 +290,8 @@ async def generate_final_report_async(session, user_query, all_contexts):
     context_combined = "\n".join(all_contexts)
     prompt = (
     "You are an expert researcher and report writer. Based on the gathered contexts below and the original query, provide a clear and definitive answer."
-    "Start the response with Da if the gathered contexts confirm a positive answer, or Ne if they confirm a negative answer."
-    "If the answer is Ne, follow it with a brief explanation in one sentence, which provides the correct answer. If the answer is Da, do not include any explanation—just write Da."
+    "Start the response with 'Da' if the gathered contexts confirm a positive answer, or 'Ne' if they confirm a negative answer."
+    "If the answer is 'Ne', follow it with a brief explanation in one sentence, which provides the correct answer. If the answer is 'Da', do not include any explanation—just write Da."
     "If the information in the gathered contexts is insufficient or unclear, respond **only** with: '-- Nije moguće sa sigurnošću utvrditi tačan odgovor na osnovu dostupnih podataka.'"
     "Do not add any additional explanation, reasoning, or commentary in this case—write **exactly** the specified text and nothing else."
     "Make the best possible conclusion based on the available data, but strictly follow this response format."
@@ -405,7 +442,10 @@ async def async_main(user_query, session):
     final_report = await generate_final_report_async(session, user_query, aggregated_contexts)
 
     binary_answer = final_report[:2]
-    right_answer = final_report[2:]
+    if binary_answer=="--":
+        right_answer = final_report[2:]
+    else:
+        right_answer = final_report
 
     return binary_answer, right_answer, links_used     # Return the final report and the useful links
 
@@ -421,7 +461,10 @@ async def extract_questions(session, text,speaker,date):
         - report (str): A list of questions generated by AI in the form of a string, where every question is separated by a \n.
     """
     prompt = (
-        f"You are an expert in extracting verifiable facts. From the given text, identify all factual statements that can be checked for truthfulness through internet research. Convert each fact into a yes/no question in Serbian (without phrases like 'Da li je govornik rekao...'). Replace all commas with ';'. Ensure each question is clear, concise, and grammatically correct. The speech was delivered by {speaker} on {date}. Return only the list of questions, nothing else."
+        f"You are an expert in extracting verifiable facts. From the given text, identify all factual statements that can be checked for truthfulness through internet research."
+        "Convert each fact into a yes/no question in Serbian (without phrases like 'Da li je govornik rekao...'). Replace all commas with ';'. "
+        "Ensure each question is clear, concise, and grammatically correct. The speech was delivered by {speaker} on {date}. Return only the list of questions, nothing else."
+        "Keep in mind that there can be approximate values, and if there is 0.5% inaccuracy in the value, that is not incorrect, only if the inaccuraccy is more than 0.5%"
     )
     messages = [
         {"role": "system", "content": "You are a skilled information extractor."},
@@ -431,40 +474,65 @@ async def extract_questions(session, text,speaker,date):
     report = await call_openrouter_async(session, messages)
     return report
 
+async def asyncio_extract_questions(text):
+    """
+        Asynchronous function that extracts questions from the given text using an AI model and writes the results to a CSV file.
 
+        Parameters:
+        - text (str): The input text from which questions will be generated.
 
+        Workflow:
+        1. Creates an asynchronous HTTP session using aiohttp.
+        2. Calls the extract_questions function to generate questions from the text.
+        3. Uses asyncio.gather to handle asynchronous execution.
+        4. Splits the result into a list of questions.
+        5. Writes the extracted questions to a CSV file.
+    """
+    async with aiohttp.ClientSession() as session:
+        tasks = [extract_questions(session,text,SPEAKER,DATE)]    
+        result = await asyncio.gather(*tasks)    
+        res=result[0].replace(",","").split("\n")
+        return res
 
-#Limits for search
-DEFAULT_ITERATION = 2
-LINKS_LIMIT = 5
+# ============================
+# Read/Write Helper Functions
+# ============================
 
-QUERY_INDEX = 0
-ANSWER_INDEX = 1
-EXPECTED_INDEX = 2
-PRECISION_INDEX = 3
-RIGHT_ANSWER_INDEX = 4
-LINKS_INDEX = 5
+# Function for reading a speech file
+def read_file_text(filename):
+    """
+        Reads a TXT file and extracts its content.
 
-PATH_SPEECH =".\\speeches\\"
-SPEECH_FILE_NAME= "govor_vucic_jagodina_miting.txt"     # Change SPEECH_FILE_NAME when reading new text
-PATH_TO_SPEECH_FILE = PATH_SPEECH + SPEECH_FILE_NAME
+        Parameters:
+        - filename (str): The path to the file.
 
-PATH_DATA = ".\\data\\"     
-CSV_FILE_NAME = "data_jagodina.csv"                 # Change CSV_FILE_NAME when writing a new one
-PATH_TO_CSV_FILE = PATH_DATA + CSV_FILE_NAME
+        Returns:
+        - text(str): Extracted text
+    """
+    with open(filename, "r", encoding="utf-8") as file:
+        text = file.read()
+        return text
 
-PATH_PRECISION = ".\\precision\\"
-LOG_FILE_NAME = "precision_log.txt"                  # Don't change
-PATH_TO_LOG_FILE = PATH_PRECISION + LOG_FILE_NAME
+# Function for writing question into CSV file
+def write_questions_csv(csv_filename, data):
+    """
+        Writes generated questions to a CSV file:
+        - Updates the question column (0).
+        - Stores the links used for each query.
+        - Calculates and records the overall accuracy percentage in log file.
 
-PATH_QUESTIONS = ".\\questions\\"
-QUESTIONS_FILE_NAME = "izdvojena_pitanja_jagodina.txt"              # Change QUESTIONS_FILE_NAME when reading from a new example
-PATH_TO_QUESTIONS_FILE = PATH_QUESTIONS + QUESTIONS_FILE_NAME
+        Parameters:
+        - filename (str): The path to the output CSV file.
+        - data (List[str]): A list of generated answers.
+    """
+    rows = []
+    for i, value in enumerate(data):
+        rows.append(value+",,,,,,\n")       # All commas are for all the empty columns in a new CSV file
 
-HEADER = "Pitanje, Odgovor, Očekivan odgovor, Tačnost, Tačan odgovor, Linkovi, Likovi za referencu\n"
-
-SPEAKER = "Aleksadar Vučić" #Bice ucitano iz JSON-a
-DATE = "24.01.2025"
+    # Write back to the CSV file
+    with open(csv_filename, "w", encoding="utf-8", newline="") as file:
+        file.write(HEADER)                  # Write the header row
+        file.write("".join(rows))
 
 # CSV reader
 def read_file_csv(filename):
@@ -484,8 +552,8 @@ def read_file_csv(filename):
         rows = list(reader)
         return rows[1:], [row[QUERY_INDEX] for row in rows[1:] if row]
 
-# Funkcija za upisivanje odgovora u CSV fajl
-def write_results(csv_filename, log_filename, data, rows, links_used, right_answers):
+# Function for writing answers into CSV file
+def write_answers_csv(csv_filename, log_filename, data, rows, links_used, right_answers):
     """
         Writes processed results back to a CSV file:
         - Updates the answer and precision columns.
@@ -503,6 +571,7 @@ def write_results(csv_filename, log_filename, data, rows, links_used, right_answ
         rows[i][ANSWER_INDEX] = value
         rows[i][RIGHT_ANSWER_INDEX] = str(right_answers[i])
         rows[i][RIGHT_ANSWER_INDEX] = right_answers[i].replace(", ", "").strip()
+        
         if (rows[i][ANSWER_INDEX] == rows[i][EXPECTED_INDEX]):
             rows[i][PRECISION_INDEX] = 1
             counterPrecision+=1
@@ -524,71 +593,16 @@ def write_results(csv_filename, log_filename, data, rows, links_used, right_answ
         logfile.write(f"{datetime.datetime.now()}: {accuracy_percentage:.2f}%\n")
 
     print(f"Accuracy percentage ({accuracy_percentage:.2f}%) writen into {log_filename}.")
-
-
-def read_file_text(filename):
-    """
-        Reads a TXT file and extracts its content.
-
-        Parameters:
-        - filename (str): The path to the file.
-
-        Returns:
-        - text(str): Extracted text
-    """
-    with open(filename, "r", encoding="utf-8") as file:
-        text = file.read()
-        return text
-
-
-# Funkcija za upisivanje odgovora u CSV fajl
-def write_results_csv(csv_filename, data):
-    """
-        Writes generated questions to a CSV file:
-        - Updates the question column (0).
-        - Stores the links used for each query.
-        - Calculates and records the overall accuracy percentage in log file.
-
-        Parameters:
-        - filename (str): The path to the output CSV file.
-        - data (List[str]): A list of generated answers.
-    """
-    rows = []
-    for i, value in enumerate(data):
-        rows.append(value+",,,,,,\n")       # All commas are for all the empty columns in a new CSV file
-
-    # Write back to the CSV file
-    with open(csv_filename, "w", encoding="utf-8", newline="") as file:
-        file.write(HEADER)                  # Write the header row
-        file.write("".join(rows))
-    
-async def asyncio_extraction_questions(text):
-    """
-        Asynchronous function that extracts questions from the given text using an AI model and writes the results to a CSV file.
-
-        Parameters:
-        - text (str): The input text from which questions will be generated.
-
-        Workflow:
-        1. Creates an asynchronous HTTP session using aiohttp.
-        2. Calls the extract_questions function to generate questions from the text.
-        3. Uses asyncio.gather to handle asynchronous execution.
-        4. Splits the result into a list of questions.
-        5. Writes the extracted questions to a CSV file.
-    """
-    async with aiohttp.ClientSession() as session:
-        tasks = [extract_questions(session,text,SPEAKER,DATE)]    
-        result = await asyncio.gather(*tasks)    
-        res=result[0].split("\n")
-        write_results_csv(PATH_TO_CSV_FILE,res)
+       
 
 def main():
     text = read_file_text(PATH_TO_SPEECH_FILE)
-    asyncio.run(asyncio_extraction_questions(text))
+    res = asyncio.run(asyncio_extract_questions(text))
+    write_questions_csv(PATH_TO_CSV_FILE,res)
+
     input_file, queries = read_file_csv(PATH_TO_CSV_FILE)
     results, links_used, right_answers = asyncio.run(process_queries(queries))
-    write_results(PATH_TO_CSV_FILE, PATH_TO_LOG_FILE, results, input_file, links_used,right_answers)
-
+    write_answers_csv(PATH_TO_CSV_FILE, PATH_TO_LOG_FILE, results, input_file, links_used,right_answers)
 
 if __name__ == "__main__":
     main()
