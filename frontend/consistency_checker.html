@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezultati Provere - AI Fact Checking</title>
+    <title>AI Consistency Checker</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -17,6 +17,7 @@
             <div class="navbar-links">
                 <a href="index.html">Početna</a>
                 <a href="fact_check.html">FactCheck</a>
+                <a href="consistency_checker.html" class="active">Consistency</a>
                 <a href="about.html">O projektu</a>
                 <a href="#contact">Kontakt</a>
             </div>
@@ -32,36 +33,105 @@
                 </svg>
                 Home
             </a>
-            <a href="#" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                </svg>
-                Search
-            </a>
-            <a href="#" class="mobile-nav-item active">
+            <a href="fact_check.html" class="mobile-nav-item">
                 <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                 </svg>
-                Analytics
+                FactCheck
             </a>
-            <a href="#" class="mobile-nav-item">
+            <a href="consistency_checker.html" class="mobile-nav-item active">
                 <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                 </svg>
-                History
+                Consistency
             </a>
-            <a href="#" class="mobile-nav-item">
+            <a href="about.html" class="mobile-nav-item">
                 <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
-                Profile
+                O projektu
             </a>
         </div>
     </nav>
 
-    <div class="result-container">
-        <div id="qaContainer">
-            <!-- Rezultati će biti dinamički ubačeni ovde -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Proverite konzistentnost teksta pomoću AI</h1>
+            <p class="hero-description">Naš AI sistem automatski analizira tekst i identifikuje nekonzistentnosti i kontradikcije. Osigurajte da vaš sadržaj bude logički dosledan i pouzdan.</p>
+            <div class="hero-buttons">
+                <div class="file-input-wrapper">
+                    <p class="drag-text">Prevucite fajl ovde ili</p>
+                    <label for="fileInput" class="custom-file-upload">
+                        Izaberite fajl
+                    </label>
+                    <input type="file" id="fileInput" accept=".txt,.doc,.docx,.pdf">
+                    <div id="fileName"></div>
+                </div>
+                <button id="executeButton">Proverite konzistentnost</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="blog-cards-container">
+        <button class="carousel-button prev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="carousel-button next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+        <div class="blog-cards">
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">Noteworthy technology acquisitions 2021</h2>
+                    <p class="blog-card-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">Latest AI developments in fact-checking</h2>
+                    <p class="blog-card-description">Discover how artificial intelligence is revolutionizing the way we verify information and combat misinformation.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">The future of automated fact-checking</h2>
+                    <p class="blog-card-description">Explore the upcoming trends and technologies that will shape the future of automated fact-checking systems.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">Ethics in AI Fact-Checking</h2>
+                    <p class="blog-card-description">Understanding the ethical implications and responsibilities of using AI in fact-checking processes.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">Machine Learning in Verification</h2>
+                    <p class="blog-card-description">Deep dive into how machine learning algorithms improve fact-checking accuracy and efficiency.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title">Real-time Fact-Checking</h2>
+                    <p class="blog-card-description">How modern AI systems enable instant verification of claims during live events and broadcasts.</p>
+                    <div class="blog-card-link">Primary</div>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -116,47 +186,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const results = [
-                { pitanje: "Da li je govornik pomenuo ekonomski rast?", odgovor: "Da, pomenuo je rast od 3.5% u prethodnoj godini." },
-                { pitanje: "Da li je izjava o nezaposlenosti tačna?", odgovor: "Ne, statistički podaci pokazuju drugačije vrednosti." },
-                { pitanje: "Koliki je budžet za obrazovanje?", odgovor: "-- Podatak nije moguće verifikovati iz dostupnih izvora." }
-            ];
-
-            const qaContainer = document.getElementById('qaContainer');
-            
-            results.forEach(result => {
-                const qaItem = document.createElement('div');
-                qaItem.className = 'qa-item';
-
-                let iconSvg = '';
-
-                if (result.odgovor.startsWith('Da')) {
-                    iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 6L9 17L4 12"></path>
-                    </svg>`;
-                } else if (result.odgovor.startsWith('Ne')) {
-                    iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>`;
-                } else {
-                    iconSvg = `<svg class="answer-icon warning" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                        <path d="M12 3L3 21h18L12 3z" rx="2" ry="2"></path> 
-                    </svg>`;
-                }
-
-                qaItem.innerHTML = `
-                    <div class="qa-question">${result.pitanje}</div>
-                    <div class="qa-answer">
-                        ${iconSvg}
-                        <span>${result.odgovor}</span>
-                    </div>
-                `;
-
-                qaContainer.appendChild(qaItem);
-            });
-        });
-    </script>
+    <script src="main.js"></script>
+    <script src="carousel.js"></script>
 </body>
-</html>
+</html> 
