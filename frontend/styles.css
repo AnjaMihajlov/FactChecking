@@ -45,9 +45,10 @@ body {
 
 .hero-buttons {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .upload-button {
@@ -252,19 +253,40 @@ h1 {
     width: 100%;
 }
 
-.primary-button{
-    margin-top: 1rem;
-    padding: 14px 32px;
-    background: #212529;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.primary-button {
+    padding: 1rem 2rem;
     font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 400px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+    background-color: #0056b3;
+}
+
+/* Specifični stilovi za index stranicu */
+.hero-section .primary-button {
+    background-color: #000000;
+}
+
+.hero-section .primary-button:hover {
+    background-color: #333333;
+}
+
+/* Specifični stilovi za fact-check i consistency stranice */
+.fact-check .primary-button,
+.consistency .primary-button {
+    background-color: #007bff;
+}
+
+.fact-check .primary-button:hover,
+.consistency .primary-button:hover {
+    background-color: #0056b3;
 }
 
 .progress-item {
@@ -645,6 +667,12 @@ footer {
 
     .hero-buttons {
         flex-direction: column;
+        width: 100%;
+    }
+    
+    .primary-button {
+        width: 100%;
+        max-width: 300px;
     }
 
     .upload-button {
@@ -909,8 +937,6 @@ footer {
     margin: 6rem auto 2rem;
     padding: 0 2rem;
 }
-
-
 
 .about-section {
     margin-bottom: 4rem;
