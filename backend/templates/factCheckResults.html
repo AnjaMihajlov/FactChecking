@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Fact Checking
+{% endblock %}
+
+{% block content %}
+    <div class="result-container">
+        <div id="qaContainer">
+            <!-- Rezultati će biti dinamički ubačeni ovde -->
+        </div>
+    </div>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const results = [
+                { pitanje: "Da li je govornik pomenuo ekonomski rast?", odgovor: "Da, pomenuo je rast od 3.5% u prethodnoj godini." },
+                { pitanje: "Da li je izjava o nezaposlenosti tačna?", odgovor: "Ne, statistički podaci pokazuju drugačije vrednosti." },
+                { pitanje: "Koliki je budžet za obrazovanje?", odgovor: "-- Podatak nije moguće verifikovati iz dostupnih izvora." }
+            ];
+
+            const qaContainer = document.getElementById('qaContainer');
+            
+            results.forEach(result => {
+                const qaItem = document.createElement('div');
+                qaItem.className = 'qa-item';
+
+                let iconSvg = '';
+
+                
+                if (result.odgovor.startsWith('Da')) {
+                    iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17L4 12"></path>
+                    </svg>`;
+                } else if (result.odgovor.startsWith('Ne')) {
+                    iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"></path>
+                    </svg>`;
+                } else {
+                    iconSvg = `<svg class="answer-icon warning" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3L3 21h18L12 3z" rx="2" ry="2"></path> 
+                    </svg>`;
+                }
+
+                qaItem.innerHTML = `
+                    <div class="qa-question">${result.pitanje}</div>
+                    <div class="qa-answer">
+                        ${iconSvg}
+                        <span>${result.odgovor}</span>
+                    </div>
+                `;
+
+                qaContainer.appendChild(qaItem);
+            });
+        });
+    </script>
+{% endblock %}
+
