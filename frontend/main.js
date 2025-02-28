@@ -112,4 +112,82 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 30);
     });
+
+    // Carousel functionality
+    const container = document.querySelector('.blog-cards-container');
+    if (container) {
+        const cards = document.querySelector('.blog-cards');
+        const cardWidth = 300; // Width of each card
+        const gap = 32; // Gap between cards (2rem = 32px)
+        const visibleCards = 3; // Number of visible cards
+        const totalCards = document.querySelectorAll('.blog-card').length; // Get actual number of cards
+        let currentIndex = 0;
+
+        // Create navigation buttons
+        const prevButton = document.createElement('button');
+        prevButton.className = 'carousel-button prev';
+        prevButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+
+        const nextButton = document.createElement('button');
+        nextButton.className = 'carousel-button next';
+        nextButton.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+
+        // Update carousel position
+        function updateCarousel() {
+            const cards = document.querySelectorAll('.blog-card');
+            const offset = -currentIndex * (cards[0].offsetWidth + parseFloat(getComputedStyle(cards[0]).marginRight));
+            
+            // Prvo dodamo klasu hiding karticama koje će biti sakrivene
+            cards.forEach((card, index) => {
+                if (card.classList.contains('visible')) {
+                    if (index < currentIndex) {
+                        card.classList.add('hiding-right');
+                    } else if (index >= currentIndex + 3) {
+                        card.classList.add('hiding');
+                    }
+                    card.classList.remove('visible');
+                }
+            });
+
+            // Sačekamo da se završi animacija sakrivanja
+            setTimeout(() => {
+                // Uklonimo hiding klase i dodamo visible za nove kartice
+                cards.forEach((card, index) => {
+                    card.classList.remove('hiding');
+                    card.classList.remove('hiding-right');
+                    if (index >= currentIndex && index < currentIndex + 3) {
+                        card.classList.add('visible');
+                    }
+                });
+                
+                document.querySelector('.blog-cards').style.transform = `translateX(${offset}px)`;
+            }, 300);
+            
+            // Ažuriramo stanje dugmadi
+            prevButton.classList.toggle('disabled', currentIndex === 0);
+            nextButton.classList.toggle('disabled', currentIndex >= totalCards - 3);
+        }
+
+        // Add click handlers
+        prevButton.addEventListener('click', () => {
+            if (!prevButton.classList.contains('disabled')) {
+                currentIndex = Math.max(0, currentIndex - 1);
+                updateCarousel();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (!nextButton.classList.contains('disabled')) {
+                currentIndex = Math.min(totalCards - visibleCards, currentIndex + 1);
+                updateCarousel();
+            }
+        });
+
+        // Add buttons to container
+        container.appendChild(prevButton);
+        container.appendChild(nextButton);
+
+        // Initial setup
+        updateCarousel();
+    }
 });
