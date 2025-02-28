@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Fact Checking
+{% endblock %}
+
+{% block content %}
+    <div class="result-container">
+        <div id="qaContainer">
+            <!-- Rezultati će biti dinamički ubačeni ovde -->
+        </div>
+    </div>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const qaContainer = document.getElementById('qaContainer');
+
+            // Učitavanje CSV fajla iz static foldera koristeći Papaparse
+            Papa.parse("{% static 'files/data_sm.csv' %}", {
+                download: true,
+                header: true, // Prvi red je header sa nazivima kolona
+                dynamicTyping: true, // Automatski konvertuje brojeve u brojčane vrednosti
+                complete: function(results) {
+                    // Kada je CSV fajl uspešno učitan i parsiran
+                    const parsedData = results.data;
+
+                    parsedData.forEach(result => {
+                        console.log(result);
+                        const qaItem = document.createElement('div');
+                        qaItem.className = 'qa-item';
+
+                        let iconSvg = '';
+
+                        // Definisanje ikone na osnovu odgovora
+                        if (result.Odgovor.startsWith('Da')) {
+                            iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17L4 12"></path>
+                            </svg>`;
+                        } else if (result.Odgovor.startsWith('Ne')) {
+                            iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"></path>
+                            </svg>`;
+                        } else {
+                            iconSvg = `<svg class="answer-icon minus" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="3">
+                                <path d="M5 12h14"></path>
+                            </svg>`;
+                        }
+
+                        let odgovor = result.Tacan_odgovor
+                        console.log(odgovor)
+                        if (odgovor === null || odgovor === undefined) {
+                            odgovor = "Izrecena tvrdnja je tacna."
+                        }
+                        // Dodavanje sadržaja u qaItem
+                        qaItem.innerHTML = `
+                            <div class="qa-question">${result.Pitanje}</div>
+                            <div class="qa-answer">
+                                ${iconSvg}
+                                <span>${result.Tacan_odgovor}</span> <!-- Prikazujemo tačan odgovor iz CSV-a -->
+                            </div>
+                        `;
+
+                        // Dodavanje novog pitanja u container
+                        qaContainer.appendChild(qaItem);
+                    });
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
+

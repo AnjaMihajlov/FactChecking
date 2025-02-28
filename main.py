@@ -9,8 +9,7 @@ import csv
 # =======================
 # Configuration Constants
 # =======================
-OPENROUTER_API_KEY = "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"
-
+OPENROUTER_API_KEY = "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"
 
 SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
 JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
@@ -53,7 +52,7 @@ PATH_QUESTIONS = ".\\questions\\"
 QUESTIONS_FILE_NAME = "miting_sremska_mitrovica.txt"              # Change QUESTIONS_FILE_NAME when reading from a new example
 PATH_TO_QUESTIONS_FILE = PATH_QUESTIONS + QUESTIONS_FILE_NAME
 
-HEADER = "Pitanje, Odgovor, Očekivan odgovor, Tačnost, Tačan odgovor, Linkovi, Likovi za referencu\n"
+HEADER = "Pitanje,Odgovor,Očekivan odgovor,Tačnost,Tacan_odgovor,Linkovi,Likovi za referencu\n"
 
 SPEAKER = "Aleksadar Vučić" #Bice ucitano iz JSON-a
 DATE = "15.02.2025"

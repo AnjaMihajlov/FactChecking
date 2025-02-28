@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Fact Checking
+{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
+            <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
+            <div class="hero-buttons">
+                <div>
+                   <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
+                        {% csrf_token %}
+                        <div class="file-input-wrapper">
+                            <p class="drag-text">Prevucite fajl ovde ili</p>
+                            <label for="fileInput" class="custom-file-upload">
+                                Izaberite fajl
+                            </label>
+                            <input type="file" id="fileInput" name="fileInput" accept=".mp3,.mp4">
+                            <div id="fileName"></div>
+                        </div>
+                        <button id="executeButton" type="submit" disabled>Izvršite proveru</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
