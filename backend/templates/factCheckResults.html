@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 Fact Checking
@@ -12,46 +13,60 @@ Fact Checking
     </div>
      <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const results = [
-                { pitanje: "Da li je govornik pomenuo ekonomski rast?", odgovor: "Da, pomenuo je rast od 3.5% u prethodnoj godini." },
-                { pitanje: "Da li je izjava o nezaposlenosti tačna?", odgovor: "Ne, statistički podaci pokazuju drugačije vrednosti." },
-                { pitanje: "Koliki je budžet za obrazovanje?", odgovor: "-- Podatak nije moguće verifikovati iz dostupnih izvora." }
-            ];
-
             const qaContainer = document.getElementById('qaContainer');
-            
-            results.forEach(result => {
-                const qaItem = document.createElement('div');
-                qaItem.className = 'qa-item';
 
-                let iconSvg = '';
+            // Učitavanje CSV fajla iz static foldera koristeći Papaparse
+            Papa.parse("{% static 'files/data_sm.csv' %}", {
+                download: true,
+                header: true, // Prvi red je header sa nazivima kolona
+                dynamicTyping: true, // Automatski konvertuje brojeve u brojčane vrednosti
+                complete: function(results) {
+                    // Kada je CSV fajl uspešno učitan i parsiran
+                    const parsedData = results.data;
 
-                
-                if (result.odgovor.startsWith('Da')) {
-                    iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 6L9 17L4 12"></path>
-                    </svg>`;
-                } else if (result.odgovor.startsWith('Ne')) {
-                    iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>`;
-                } else {
-                    iconSvg = `<svg class="answer-icon warning" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                        <path d="M12 3L3 21h18L12 3z" rx="2" ry="2"></path> 
-                    </svg>`;
+                    parsedData.forEach(result => {
+                        console.log(result);
+                        const qaItem = document.createElement('div');
+                        qaItem.className = 'qa-item';
+
+                        let iconSvg = '';
+
+                        // Definisanje ikone na osnovu odgovora
+                        if (result.Odgovor.startsWith('Da')) {
+                            iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17L4 12"></path>
+                            </svg>`;
+                        } else if (result.Odgovor.startsWith('Ne')) {
+                            iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"></path>
+                            </svg>`;
+                        } else {
+                            iconSvg = `<svg class="answer-icon minus" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="3">
+                                <path d="M5 12h14"></path>
+                            </svg>`;
+                        }
+
+                        let odgovor = result.Tacan_odgovor
+                        console.log(odgovor)
+                        if (odgovor === null || odgovor === undefined) {
+                            odgovor = "Izrecena tvrdnja je tacna."
+                        }
+                        // Dodavanje sadržaja u qaItem
+                        qaItem.innerHTML = `
+                            <div class="qa-question">${result.Pitanje}</div>
+                            <div class="qa-answer">
+                                ${iconSvg}
+                                <span>${result.Tacan_odgovor}</span> <!-- Prikazujemo tačan odgovor iz CSV-a -->
+                            </div>
+                        `;
+
+                        // Dodavanje novog pitanja u container
+                        qaContainer.appendChild(qaItem);
+                    });
                 }
-
-                qaItem.innerHTML = `
-                    <div class="qa-question">${result.pitanje}</div>
-                    <div class="qa-answer">
-                        ${iconSvg}
-                        <span>${result.odgovor}</span>
-                    </div>
-                `;
-
-                qaContainer.appendChild(qaItem);
             });
         });
+
     </script>
 {% endblock %}
 
