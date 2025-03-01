@@ -1,192 +1,351 @@
 <!DOCTYPE html>
 <html lang="sr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Consistency Checker</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="consistency">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Consistency Checking</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="consistency">
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">
-                <img src="logo_etf.svg" alt="Logo">
-                <span class="navbar-title">AI Fact Checking</span>
-            </a>
-            <div class="navbar-links">
-                <a href="index.html">Početna</a>
-                <a href="fact_check.html">FactCheck</a>
-                <a href="consistency_checker.html" class="active">Consistency</a>
-                <a href="about.html">O projektu</a>
-                <a href="#contact">Kontakt</a>
-            </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <img src="logo_etf.svg" alt="Logo" />
+          <span class="navbar-title">AI Consistency Checking</span>
+        </a>
+        <div class="navbar-links">
+          <a href="index.html">Početna</a>
+          <a href="fact_check.html">FactCheck</a>
+          <a href="consistency_checker.html" class="active">Consistency</a>
+          <a href="about.html">O projektu</a>
+          <a href="#contact">Kontakt</a>
         </div>
+      </div>
     </nav>
 
     <!-- Mobilni navbar -->
     <nav class="mobile-navbar">
-        <div class="mobile-nav-items">
-            <a href="index.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 3L4 9v12h16V9l-8-6z"/>
-                </svg>
-                Home
-            </a>
-            <a href="fact_check.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                FactCheck
-            </a>
-            <a href="consistency_checker.html" class="mobile-nav-item active">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-                Consistency
-            </a>
-            <a href="about.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                O projektu
-            </a>
-        </div>
+      <div class="mobile-nav-items">
+        <a href="index.html" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 3L4 9v12h16V9l-8-6z" />
+          </svg>
+          Home
+        </a>
+        <a href="#" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+          Search
+        </a>
+        <a href="#" class="mobile-nav-item active">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+            />
+          </svg>
+          Analytics
+        </a>
+        <a href="#" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"
+            />
+          </svg>
+          History
+        </a>
+        <a href="#" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+          Profile
+        </a>
+      </div>
     </nav>
 
     <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Proverite konzistentnost teksta pomoću AI</h1>
-            <p class="hero-description">Naš AI sistem automatski analizira tekst i identifikuje nekonzistentnosti i kontradikcije. Osigurajte da vaš sadržaj bude logički dosledan i pouzdan.</p>
-            <div class="hero-buttons">
-                <div class="file-input-wrapper">
-                    <p class="drag-text">Prevucite fajl ovde ili</p>
-                    <label for="fileInput" class="custom-file-upload">
-                        Izaberite fajl
-                    </label>
-                    <input type="file" id="fileInput" accept=".txt,.doc,.docx,.pdf">
-                    <div id="fileName"></div>
-                </div>
-                <button id="executeButton">Proverite konzistentnost</button>
-            </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Proverite konzistentnost izjava pomoću AI</h1>
+        <p class="hero-description">
+          Naš AI sistem automatski analizira više izjava iste osobe,
+          identifikuje kontradikcije i nedoslednosti. Otkrijte da li su stavovi
+          i izjave konzistentni tokom vremena.
+        </p>
+        <div class="hero-buttons">
+          <div class="file-input-wrapper">
+            <p class="drag-text">Prevucite fajl ovde ili</p>
+            <label for="fileInput" class="custom-file-upload">
+              Izaberite fajl
+            </label>
+            <input type="file" id="fileInput" accept=".mp3,.mp4" />
+            <div id="fileName"></div>
+          </div>
+          <button id="executeButton">Izvršite proveru</button>
         </div>
+      </div>
     </section>
 
-    <div class="blog-cards-container">
-        <button class="carousel-button prev">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 19l-7-7 7-7"/>
-            </svg>
+    <h2 class="carousel-title">Neki zanimljivi govori</h2>
+
+    <!--HTML CODE-->
+    <div class="carosel-container">
+      <div class="relative">
+        <button class="carousel-button prev group" id="slider-button-left">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
-        <button class="carousel-button next">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 5l7 7-7 7"/>
-            </svg>
+        <button class="carousel-button next group" id="slider-button-right">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
-        <div class="blog-cards">
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+        <div class="swiper multiple-slide-carousel swiper-container">
+          <div class="swiper-wrapper mb-16">
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/vucic_sava_centar.jpg"
+                  alt="Vučić u Sava Centru"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Noteworthy technology acquisitions 2021</h2>
-                    <p class="blog-card-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izjave o Sava Centru</h2>
+                  <p class="blog-card-description">
+                    Analiza konzistentnosti izjava predsednika Vučića o
+                    renoviranju i budućnosti Sava Centra kroz vreme.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/vucic_jagodina.jpg"
+                  alt="Vučić u Jagodini"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Latest AI developments in fact-checking</h2>
-                    <p class="blog-card-description">Discover how artificial intelligence is revolutionizing the way we verify information and combat misinformation.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Poseta Jagodini</h2>
+                  <p class="blog-card-description">
+                    Provera konzistentnosti izjava o investicijama u Jagodini
+                    tokom različitih poseta ovom gradu.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/insajder_vucic.jpg"
+                  alt="Insajder intervju"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">The future of automated fact-checking</h2>
-                    <p class="blog-card-description">Explore the upcoming trends and technologies that will shape the future of automated fact-checking systems.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Insajder intervjui</h2>
+                  <p class="blog-card-description">
+                    Detaljna analiza konzistentnosti izjava u različitim
+                    intervjuima za Insajder televiziju.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/izbori_2017.jpeg"
+                  alt="Izbori 2017"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Ethics in AI Fact-Checking</h2>
-                    <p class="blog-card-description">Understanding the ethical implications and responsibilities of using AI in fact-checking processes.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izborne kampanje</h2>
+                  <p class="blog-card-description">
+                    Analiza konzistentnosti izjava i obećanja tokom različitih
+                    izbornih kampanja.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/vucic_precednistvo.jpg"
+                  alt="Predsedništvo"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Machine Learning in Verification</h2>
-                    <p class="blog-card-description">Deep dive into how machine learning algorithms improve fact-checking accuracy and efficiency.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
+                  <p class="blog-card-description">
+                    Analiza konzistentnosti ključnih izjava i odluka donetih
+                    tokom različitih sastanaka u Predsedništvu.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="images/vucic_smg.jpg"
+                  alt="Matematička gimnazija"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Real-time Fact-Checking</h2>
-                    <p class="blog-card-description">How modern AI systems enable instant verification of claims during live events and broadcasts.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izjave o obrazovanju</h2>
+                  <p class="blog-card-description">
+                    Provera konzistentnosti izjava o ulaganju u obrazovanje i
+                    podršci mladim talentima kroz godine.
+                  </p>
+                  <div class="blog-card-link">Proverite konzistentnost</div>
                 </div>
-            </a>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Navigacija</h3>
-                <ul class="footer-links">
-                    <li><a href="/">Početna</a></li>
-                    <li><a href="/about">O nama</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Resursi</h3>
-                <ul class="footer-links">
-                    <li><a href="/docs">Dokumentacija</a></li>
-                    <li><a href="/api">API</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/support">Podrška</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Pratite nas</h3>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                        </svg>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Navigacija</h3>
+          <ul class="footer-links">
+            <li><a href="/">Početna</a></li>
+            <li><a href="/about">O nama</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Kontakt</a></li>
+          </ul>
         </div>
-        <div class="footer-bottom">
-            <div>&copy; 2024 Fact Checking AI. Sva prava zadržana.</div>
+        <div class="footer-column">
+          <h3>Resursi</h3>
+          <ul class="footer-links">
+            <li><a href="/docs">Dokumentacija</a></li>
+            <li><a href="/api">API</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/support">Podrška</a></li>
+          </ul>
         </div>
+        <div class="footer-column">
+          <h3>Pratite nas</h3>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                />
+              </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2024 Consistency Checking AI. Sva prava zadržana.</div>
+      </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="main.js"></script>
-    <script src="carousel.js"></script>
-</body>
-</html> 
+  </body>
+</html>
