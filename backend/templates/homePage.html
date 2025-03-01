@@ -8,14 +8,13 @@ Deep Check
 {% block content %}
      <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">Host on the Cloud to Keep Growing</h1>
+        <h1 class="hero-title">Proverite istinitost izjava pomocu AI</h1>
         <p class="hero-description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,
-          voluptatem.
+           Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.
         </p>
         <div class="hero-buttons">
-          <button class="primary-button">Proverite činjenice</button>
-          <button class="primary-button">Analizirajte doslednost</button>
+            <a class="primary-button" href="{% url 'fcHome' %}">Provera tačnosti</a>
+            <a class="primary-button" href="{% url 'ccHome' %}">Doslednost</a>
         </div>
       </div>
     </section>
@@ -56,7 +55,7 @@ Deep Check
           <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
         <div class="feature-image">
-          <img src="{% static 'images/govor_politicara.jpg'  %}" alt="Feature 1" />
+          <img src="{% static 'images/politican_speking.png'  %}"  class="transparent" alt="Feature 1" />
         </div>
       </div>
     </section>
@@ -64,7 +63,7 @@ Deep Check
     <section class="features-section reverse">
       <div class="features-container">
         <div class="feature-image">
-          <img src="{% static 'images/AV.webp' %}" alt="Feature 2" />
+          <img src="{% static 'images/AV.svg' %}" class="transparent" alt="Feature 2" />
         </div>
         <div class="feature-content">
           <div class="feature-header">
@@ -141,7 +140,7 @@ Deep Check
           <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
         <div class="feature-image">
-          <img  src="{% static 'images/protesti.jpg'  %}" alt="Feature 3" />
+          <img  src="{% static 'images/protest.png'  %}" class="transparent" alt="Feature 3" />
         </div>
       </div>
     </section>
