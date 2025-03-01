@@ -22,10 +22,10 @@ Fact Checking
             <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
             <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
             <div class="hero-buttons">
-                <div>
+                <div class="file-input-wrapper">
                    <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
                         {% csrf_token %}
-                        <div class="file-input-wrapper">
+                        <div class="file-input-wrapper2">
                             <p class="drag-text">Prevucite fajl ovde ili</p>
                             <label for="fileInput" class="custom-file-upload">
                                 Izaberite fajl
@@ -81,7 +81,7 @@ Fact Checking
                 <div class="blog-card-content">
                   <h2 class="blog-card-title">Izjave o Sava Centru</h2>
                   <p class="blog-card-description">
-                    Analiza izjava predsednika Vučića o renoviranju i budućnosti
+                    Analiza izjava predsednika Vučića o renoviranju
                     Sava Centra kao kulturnog simbola Beograda.
                   </p>
                   <div class="blog-card-link">Proverite činjenice</div>

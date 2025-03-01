@@ -202,7 +202,11 @@ h1 {
   right: -75px;
 }
 
-.file-input-wrapper {
+.file-input-wrapper{
+  width:100%;
+}
+
+.file-input-wrapper2 {
   position: relative;
   z-index: 1;
   padding: 2rem;
@@ -215,7 +219,7 @@ h1 {
   margin: 0 auto;
 }
 
-.file-input-wrapper:hover {
+.file-input-wrapper2:hover {
   border-color: #000000;
   background: rgba(255, 255, 255, 0.9);
 }
@@ -253,7 +257,7 @@ h1 {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 100%;
   max-width: 300px;
 }
@@ -265,9 +269,16 @@ h1 {
 }
 
 #executeButton:disabled {
-  background-color: var(--text-secondary);
-  border-color: var(--text-secondary);
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-primary);
   cursor: not-allowed;
+}
+
+#executeButton:disabled:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  transform: none;
 }
 
 .loading-section {
@@ -540,7 +551,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #007bff;
+  color: var(--text-secondary);
 }
 
 .footer-bottom {
@@ -569,7 +580,7 @@ footer {
 }
 
 .social-icon:hover {
-  color: #007bff;
+  color: var(--text-secondary);
   transform: translateY(-3px);
 }
 
@@ -680,7 +691,7 @@ footer {
 }
 
 /* Responsive design */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   body {
     padding-bottom: 80px; /* Prostor za mobilni navbar */
   }
@@ -694,6 +705,7 @@ footer {
   .navbar-container {
     justify-content: flex-start;
     padding: 0 1rem;
+    margin-left: 1.5rem;
   }
 
   .navbar-links {
@@ -742,7 +754,7 @@ footer {
     padding: 1.5rem;
   }
 
-  .file-input-wrapper {
+  .file-input-wrapper2 {
     padding: 1.5rem;
   }
 
@@ -783,7 +795,6 @@ footer {
     width: 85%;
   }
 }
-
 /* Feature sekcija */
 .features-section {
   padding: 4rem 0;
@@ -804,7 +815,6 @@ footer {
   align-items: center;
   gap: 2rem;
   position: relative;
-  /* margin-bottom: 5rem; */
 }
 
 .feature-content {
@@ -818,6 +828,10 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.min-height-0 {
+  min-height: auto;
 }
 
 .feature-image {
@@ -848,24 +862,22 @@ footer {
   .features-container {
     width: 90%;
     flex-direction: column;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    gap: 0; /* Uklonjen razmak između elemenata */
   }
 
-  /* Prvo tekst pa onda slika */
   .features-container .feature-content {
-    order: 1; /* Prvo prikazujemo tekst */
+    order: 1;
     width: 100%;
     min-height: auto;
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0; /* Uklonjen donji margin */
   }
 
   .features-container .feature-image {
-    order: 2; /* Zatim prikazujemo sliku */
+    order: 2;
     width: 100%;
     min-height: auto;
-    margin-top: 2rem;
+    margin-top: 0; /* Uklonjen gornji margin */
     padding: 1.5rem 0;
   }
 
@@ -927,6 +939,16 @@ footer {
     margin-bottom: 1.5rem;
     margin-top: 2rem;
   }
+}
+
+@media(max-width: 768px){
+  .features-section{
+    padding: 0;
+  }
+  .top-section{
+    padding-top:4rem;
+  }
+
 }
 
 .carousel-title {
@@ -1591,3 +1613,4 @@ footer {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
