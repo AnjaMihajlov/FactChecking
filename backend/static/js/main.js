@@ -162,32 +162,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // Drag and drop funkcionalnost
-  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-    fileInputWrapper.addEventListener(eventName, preventDefaults, false);
-  });
+  if (fileInputWrapper) {
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+      fileInputWrapper.addEventListener(eventName, preventDefaults, false);
+    });
+
+    ["dragenter", "dragover"].forEach((eventName) => {
+      fileInputWrapper.addEventListener(eventName, highlight, false);
+    });
+
+    ["dragleave", "drop"].forEach((eventName) => {
+      fileInputWrapper.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+      fileInputWrapper.classList.add("highlight");
+    }
+
+    function unhighlight(e) {
+      fileInputWrapper.classList.remove("highlight");
+    }
+
+    fileInputWrapper.addEventListener("drop", handleDrop, false);
+  }
 
   function preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
   }
-
-  ["dragenter", "dragover"].forEach((eventName) => {
-    fileInputWrapper.addEventListener(eventName, highlight, false);
-  });
-
-  ["dragleave", "drop"].forEach((eventName) => {
-    fileInputWrapper.addEventListener(eventName, unhighlight, false);
-  });
-
-  function highlight(e) {
-    fileInputWrapper.classList.add("highlight");
-  }
-
-  function unhighlight(e) {
-    fileInputWrapper.classList.remove("highlight");
-  }
-
-  fileInputWrapper.addEventListener("drop", handleDrop, false);
 
   function handleDrop(e) {
     const dt = e.dataTransfer;
@@ -209,50 +211,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  fileInput.addEventListener("change", function (e) {
-    const file = e.target.files[0];
-    handleFile(file);
-  });
+  if (fileInput) {
+    fileInput.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      handleFile(file);
+    });
 
-  executeButton.addEventListener("click", async function () {
-    const file = fileInput.files[0];
-    if (!file) return;
+    executeButton.addEventListener("click", async function () {
+      const file = fileInput.files[0];
+      if (!file) return;
 
-    document.querySelector(".upload-section").style.display = "none";
-    loadingSection.style.display = "block";
-    resultsSection.style.display = "none";
+      document.querySelector(".upload-section").style.display = "none";
+      loadingSection.style.display = "block";
+      resultsSection.style.display = "none";
 
-    // Simulacija progresa
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-      progress += 1;
-      progressFill.style.width = `${progress}%`;
-      if (progress >= 100) {
-        clearInterval(progressInterval);
+      // Simulacija progresa
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += 1;
+        progressFill.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(progressInterval);
 
-        // Primer podataka
-        const results = [
-          { pitanje: "Prvo pitanje?", odgovor: "Prvi odgovor" },
-          { pitanje: "Drugo pitanje?", odgovor: "Drugi odgovor" },
-        ];
+          // Primer podataka
+          const results = [
+            { pitanje: "Prvo pitanje?", odgovor: "Prvi odgovor" },
+            { pitanje: "Drugo pitanje?", odgovor: "Drugi odgovor" },
+          ];
 
-        resultsTableBody.innerHTML = "";
-        results.forEach((result) => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                        <td>${result.pitanje}</td>
-                        <td>${result.odgovor}</td>
-                    `;
-          resultsTableBody.appendChild(row);
-        });
+          resultsTableBody.innerHTML = "";
+          results.forEach((result) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                          <td>${result.pitanje}</td>
+                          <td>${result.odgovor}</td>
+                      `;
+            resultsTableBody.appendChild(row);
+          });
 
-        setTimeout(() => {
-          loadingSection.style.display = "none";
-          resultsSection.style.display = "block";
-        }, 500);
-      }
-    }, 30);
-  });
+          setTimeout(() => {
+            loadingSection.style.display = "none";
+            resultsSection.style.display = "block";
+          }, 500);
+        }
+      }, 30);
+    });
+  }
 
   // Remove the old carousel functionality since we're using Swiper
   // Carousel functionality
@@ -394,4 +398,101 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+
+  // ... existing code ...
+
+  // Funkcija za postavljanje aktivne stavke u mobilnom meniju
+  function setActiveMobileNavItem() {
+    // Dobijanje trenutne putanje
+    const currentPath = window.location.pathname;
+
+    // Uklanjanje klase 'active' sa svih stavki mobilnog menija
+    const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+    mobileNavItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+    console.log(currentPath);
+
+    // Postavljanje klase 'active' na odgovarajuću stavku na osnovu trenutne stranice
+    if (currentPath.includes("fcHome") || currentPath.endsWith("fcHome")) {
+      document
+        .querySelector('.mobile-nav-item[href*="fcHome"]')
+        ?.classList.add("active");
+    } else if (
+      currentPath.includes("ccHome") ||
+      currentPath.endsWith("ccHome")
+    ) {
+      document
+        .querySelector('.mobile-nav-item[href*="ccHome"]')
+        ?.classList.add("active");
+    } else if (currentPath.includes("about") || currentPath.endsWith("about")) {
+      document.querySelector(".about")?.classList.add("active");
+    } else {
+      // Podrazumevano za index stranicu
+      document
+        .querySelector(
+          '.mobile-nav-item[href="./home"], .mobile-nav-item[href="./"], .mobile-nav-item[href="/"]'
+        )
+        ?.classList.add("active");
+    }
+  }
+  setActiveMobileNavItem();
+
+  // Pozivanje funkcije kada se promeni stanje istorije (za SPA navigaciju ako postoji)
+  window.addEventListener("popstate", setActiveMobileNavItem);
 });
+
+function factCheck(file) {
+  const qaContainer = document.getElementById("qaContainer");
+
+  // Učitavanje CSV fajla iz static foldera koristeći Papaparse
+  Papa.parse(file, {
+    download: true,
+    header: true, // Prvi red je header sa nazivima kolona
+    dynamicTyping: true, // Automatski konvertuje brojeve u brojčane vrednosti
+    complete: function (results) {
+      // Kada je CSV fajl uspešno učitan i parsiran
+      const parsedData = results.data;
+
+      parsedData.forEach((result) => {
+        console.log(result);
+        const qaItem = document.createElement("div");
+        qaItem.className = "qa-item";
+
+        let iconSvg = "";
+
+        // Definisanje ikone na osnovu odgovora
+        if (result.Odgovor.startsWith("Da")) {
+          iconSvg = `<svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 6L9 17L4 12"></path>
+                  </svg>`;
+        } else if (result.Odgovor.startsWith("Ne")) {
+          iconSvg = `<svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 6L6 18M6 6l12 12"></path>
+                  </svg>`;
+        } else {
+          iconSvg = `<svg class="answer-icon minus" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="3">
+                      <path d="M5 12h14"></path>
+                  </svg>`;
+        }
+
+        let odgovor = result.Tacan_odgovor;
+        console.log(odgovor);
+        if (odgovor === null || odgovor === undefined) {
+          odgovor = "Izrecena tvrdnja je tacna.";
+        }
+        // Dodavanje sadržaja u qaItem
+        qaItem.innerHTML = `
+                  <div class="qa-question">${result.Pitanje}</div>
+                  <div class="qa-answer">
+                      ${iconSvg}
+                      <span>${result.Tacan_odgovor}</span> <!-- Prikazujemo tačan odgovor iz CSV-a -->
+                  </div>
+              `;
+
+        // Dodavanje novog pitanja u container
+        qaContainer.appendChild(qaItem);
+      });
+    },
+  });
+}

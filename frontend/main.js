@@ -254,4 +254,74 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+
+  // Funkcija za postavljanje aktivne stavke u mobilnom meniju
+  function setActiveMobileNavItem() {
+    // Dobijanje trenutne putanje
+    const currentPath = window.location.pathname;
+
+    // Uklanjanje klase 'active' sa svih stavki mobilnog menija
+    const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+    mobileNavItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // Postavljanje klase 'active' na odgovarajuću stavku na osnovu trenutne stranice
+    if (
+      currentPath.includes("fact_check") ||
+      currentPath.endsWith("fact_check.html")
+    ) {
+      document
+        .querySelector('.mobile-nav-item[href*="fact_check"]')
+        ?.classList.add("active");
+    } else if (
+      currentPath.includes("consistency") ||
+      currentPath.endsWith("consistency.html")
+    ) {
+      document
+        .querySelector('.mobile-nav-item[href*="consistency"]')
+        ?.classList.add("active");
+    } else if (
+      currentPath.includes("about") ||
+      currentPath.endsWith("about.html")
+    ) {
+      document
+        .querySelector('.mobile-nav-item[href*="about"]')
+        ?.classList.add("active");
+    } else {
+      // Podrazumevano za index stranicu
+      document
+        .querySelector(
+          '.mobile-nav-item[href="./index.html"], .mobile-nav-item[href="./"], .mobile-nav-item[href="/"]'
+        )
+        ?.classList.add("active");
+    }
+  }
+
+  // Postavljanje aktivne stavke u mobilnom meniju
+  setActiveMobileNavItem();
+
+  // Pozivanje funkcije kada se promeni stanje istorije (za SPA navigaciju ako postoji)
+  window.addEventListener("popstate", setActiveMobileNavItem);
+
+  // Funkcija za proveru činjenica na osnovu CSV fajla
+  function factCheck(fileName) {
+    console.log(`Provera činjenica za fajl: ${fileName}`);
+
+    // Ovde možete dodati logiku za preusmeravanje na fact_check stranicu
+    // sa parametrom za učitavanje određenog fajla
+
+    // Primer preusmeravanja na fact_check stranicu sa parametrom
+    window.location.href = `fact_check.html?file=${encodeURIComponent(
+      fileName
+    )}`;
+  }
 });
+
+// Globalna funkcija factCheck koja se može pozivati iz HTML-a
+window.factCheck = function (fileName) {
+  console.log(`Provera činjenica za fajl: ${fileName}`);
+
+  // Preusmeravanje na fact_check stranicu sa parametrom
+  window.location.href = `fact_check.html?file=${encodeURIComponent(fileName)}`;
+};

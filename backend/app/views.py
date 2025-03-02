@@ -15,7 +15,11 @@ def factCheckHome(request):
     return render(request,"factCheckHome.html")
 
 def factCheckResults(request):
-    return render(request,"factCheckResults.html")
+    if "file" in request:
+        context = { 'file': request['file'] }
+    else:
+        context=None
+    return render(request,"factCheckResults.html",context)
 
 def consistencyCheckHome(request):
     return render(request,"consistencyCheckHome.html")
