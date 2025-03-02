@@ -1,89 +1,185 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-Fact Checking
+Consistency Checker
+{% endblock %}
+
+{% block links %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      rel="stylesheet"
+    />
 {% endblock %}
 
 {% block content %}
     <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
-            <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
+            <h1 class="hero-title">Proverite kontradiktornost izjava pomoću veštačke inteligencije</h1>
+            <p class="hero-description">
+                Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte dezinformacije, zaštitite se od manipulacije političara i osigurajte da informacije kojima verujete budu tačne.
+            </p>
             <div class="hero-buttons">
                 <div class="file-input-wrapper">
-                    <p class="drag-text">Prevucite fajl ovde ili</p>
-                    <label for="fileInput" class="custom-file-upload">
-                        Izaberite fajl
-                    </label>
-                    <input type="file" id="fileInput" accept=".mp3,.mp4">
-                    <div id="fileName"></div>
+                   <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
+                        {% csrf_token %}
+                        <div class="file-input-wrapper2">
+                            <p class="drag-text">Prevucite fajl ovde ili</p>
+                            <label for="fileInput" class="custom-file-upload">
+                                Izaberite fajl
+                            </label>
+                            <input type="file" id="fileInput" name="fileInput" accept=".mp3,.mp4">
+                            <div id="fileName"></div>
+                        </div>
+                        <button id="executeButton" type="submit" disabled>Izvršite proveru</button>
+                    </form>
+
                 </div>
-                <button id="executeButton" >Izvršite proveru</button>
             </div>
         </div>
     </section>
+   <h2 class="carousel-title">Neki zanimljivi govori</h2>
 
-    <div class="blog-cards-container">
-        <button class="carousel-button prev">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 19l-7-7 7-7"/>
-            </svg>
+    <!--HTML CODE-->
+    <div class="carosel-container">
+      <div class="relative">
+        <button class="carousel-button prev group" id="slider-button-left">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
-        <button class="carousel-button next">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 5l7 7-7 7"/>
-            </svg>
+        <button class="carousel-button next group" id="slider-button-right">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
-        <div class="blog-cards">
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+        <div class="swiper multiple-slide-carousel swiper-container">
+          <div class="swiper-wrapper mb-16">
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/vucic_sava_centar.jpg' %}"
+                  alt="Vučić u Sava Centru"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Noteworthy technology acquisitions 2021</h2>
-                    <p class="blog-card-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izjave o Sava Centru</h2>
+                  <p class="blog-card-description">
+                    Analiza izjava predsednika Vučića o renoviranju
+                    Sava Centra kao kulturnog simbola Beograda.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/vucic_jagodina.jpg' %}"
+                  alt="Vučić u Jagodini"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Latest AI developments in fact-checking</h2>
-                    <p class="blog-card-description">Discover how artificial intelligence is revolutionizing the way we verify information and combat misinformation.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Poseta Jagodini</h2>
+                  <p class="blog-card-description">
+                    Provera činjenica iz govora tokom zvanične posete Jagodini i
+                    najave novih investicija u ovom regionu.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/insajder_vucic.jpg' %}"
+                  alt="Insajder intervju"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">The future of automated fact-checking</h2>
-                    <p class="blog-card-description">Explore the upcoming trends and technologies that will shape the future of automated fact-checking systems.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Insajder intervju</h2>
+                  <p class="blog-card-description">
+                    Detaljna analiza ključnih izjava i podataka iznetih tokom
+                    intervjua za Insajder televiziju.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/izbori_2017.jpeg' %}"
+                  alt="Izbori 2017"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Ethics in AI Fact-Checking</h2>
-                    <p class="blog-card-description">Understanding the ethical implications and responsibilities of using AI in fact-checking processes.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izborna kampanja 2017</h2>
+                  <p class="blog-card-description">
+                    Retrospektiva i provera činjenica iz predizborne kampanje
+                    2017. godine i ispunjenja datih obećanja.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/vucic_precednistvo.jpg' %}"
+                  alt="Predsedništvo"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Machine Learning in Verification</h2>
-                    <p class="blog-card-description">Deep dive into how machine learning algorithms improve fact-checking accuracy and efficiency.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
+                  <p class="blog-card-description">
+                    Analiza ključnih izjava i odluka donetih tokom važnih
+                    sastanaka u Predsedništvu Srbije.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="laptop.jpg" alt="Technology" class="blog-card-image">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="blog-card">
+                <img
+                  src="{% static 'images/vucic_smg.jpg' %}"
+                  alt="Matematička gimnazija"
+                  class="blog-card-image"
+                />
                 <div class="blog-card-content">
-                    <h2 class="blog-card-title">Real-time Fact-Checking</h2>
-                    <p class="blog-card-description">How modern AI systems enable instant verification of claims during live events and broadcasts.</p>
-                    <div class="blog-card-link">Primary</div>
+                  <h2 class="blog-card-title">Poseta Matematičkoj gimnaziji</h2>
+                  <p class="blog-card-description">
+                    Provera činjenica iz govora o ulaganju u obrazovanje i
+                    podršci mladim talentima.
+                  </p>
+                  <div class="blog-card-link">Proverite činjenice</div>
                 </div>
-            </a>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
+      </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

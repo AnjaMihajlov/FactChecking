@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Fact Checking
+Fact Checker
 {% endblock %}
 
 {% block links %}
@@ -19,8 +19,10 @@ Fact Checking
 {% block content %}
     <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
-            <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
+            <h1 class="hero-title">Proverite istinitost izjava pomoću veštačke inteligencije</h1>
+            <p class="hero-description">
+                Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte dezinformacije, zaštitite se od manipulacije političara i osigurajte da informacije kojima verujete budu tačne.
+            </p>
             <div class="hero-buttons">
                 <div class="file-input-wrapper">
                    <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">

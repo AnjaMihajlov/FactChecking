@@ -8,13 +8,13 @@ Deep Check
 {% block content %}
      <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">Proverite istinitost izjava pomocu AI</h1>
+        <h1 class="hero-title">AI platforma za analizu političkih izjava</h1>
         <p class="hero-description">
-           Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.
+            Ova platforma koristi veštačku inteligenciju za proveru tačnosti i doslednosti, odnosno kontradiktornosti izjava političara. Kroz detaljnu analizu i upoređivanje s pouzdanim izvorima, alat pruža objektivnu sliku političkih poruka, osnažuje građane da donose informisane odluke i podstiče transparentniju i odgovorniju javnu debatu.
         </p>
         <div class="hero-buttons">
-            <a class="primary-button" href="{% url 'fcHome' %}">Provera tačnosti</a>
-            <a class="primary-button" href="{% url 'ccHome' %}">Doslednost</a>
+            <a class="primary-button" href="{% url 'fcHome' %}">Fact Checker</a>
+            <a class="primary-button" href="{% url 'ccHome' %}">Consistency Checker</a>
         </div>
       </div>
     </section>
@@ -176,4 +176,20 @@ Deep Check
         </div>
       </div>
     </section>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Animacija za hero sekciju
+        const heroTitle = document.querySelector(".hero-title");
+        if (heroTitle) {
+            heroTitle.style.opacity = "0";
+            heroTitle.style.transform = "translateY(20px)";
+            setTimeout(() => {
+                heroTitle.style.transition =
+                    "opacity 0.8s ease-out, transform 0.8s ease-out";
+                heroTitle.style.opacity = "1";
+                heroTitle.style.transform = "translateY(0)";
+            }, 100);
+        }
+    })
+    </script>
 {% endblock %}

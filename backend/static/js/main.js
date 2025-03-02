@@ -136,6 +136,30 @@ document.addEventListener("DOMContentLoaded", function () {
       heroTitle.style.transform = "translateY(0)";
     }, 100);
   }
+  //
+  // const heroDescription = document.querySelector(".hero-description");
+  // if (heroDescription) {
+  //   heroDescription.style.opacity = "0";
+  //   heroDescription.style.transform = "translateY(20px)";
+  //   setTimeout(() => {
+  //     heroDescription.style.transition =
+  //       "opacity 0.8s ease-out, transform 0.8s ease-out";
+  //     heroDescription.style.opacity = "1";
+  //     heroDescription.style.transform = "translateY(0)";
+  //   }, 100);
+  // }
+  //
+  // const heroButtons = document.querySelector(".hero-buttons");
+  // if (heroButtons) {
+  //   heroButtons.style.opacity = "0";
+  //   heroButtons.style.transform = "translateY(20px)";
+  //   setTimeout(() => {
+  //     heroButtons.style.transition =
+  //       "opacity 0.8s ease-out, transform 0.8s ease-out";
+  //     heroButtons.style.opacity = "1";
+  //     heroButtons.style.transform = "translateY(0)";
+  //   }, 100);
+  // }
 
   // Drag and drop funkcionalnost
   ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
