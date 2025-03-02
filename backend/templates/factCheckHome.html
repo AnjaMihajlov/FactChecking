@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Fact Checking
+Fact Checker
 {% endblock %}
 
 {% block links %}
@@ -17,15 +17,17 @@ Fact Checking
 {% endblock %}
 
 {% block content %}
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
-            <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
-            <div class="hero-buttons">
-                <div>
-                   <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
+   <section class="hero-section hero-section-fact">
+        <div class="hero-content hero-content-fact">
+            <div class="hero-text hero-text-fact">
+                <h1 class="hero-title hero-title-fact">Proverite istinitost izjava pomoću veštačke inteligencije</h1>
+                <p class="hero-description hero-description-fact">
+                    Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tačne.
+                </p>
+                <div class="file-input-wrapper">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
                         {% csrf_token %}
-                        <div class="file-input-wrapper">
+                        <div class="file-input-wrapper2">
                             <p class="drag-text">Prevucite fajl ovde ili</p>
                             <label for="fileInput" class="custom-file-upload">
                                 Izaberite fajl
@@ -35,14 +37,15 @@ Fact Checking
                         </div>
                         <button id="executeButton" type="submit" disabled>Izvršite proveru</button>
                     </form>
-
                 </div>
+            </div>
+            <div class="hero-illustration-fact">
+                <img src="{% static 'images/AI.png' %}" alt="AI Analysis Illustration">
             </div>
         </div>
     </section>
-   <h2 class="carousel-title">Neki zanimljivi govori</h2>
 
-    <!--HTML CODE-->
+    <h2 class="carousel-title">Neki zanimljivi govori</h2>
     <div class="carosel-container">
       <div class="relative">
         <button class="carousel-button prev group" id="slider-button-left">
@@ -81,7 +84,7 @@ Fact Checking
                 <div class="blog-card-content">
                   <h2 class="blog-card-title">Izjave o Sava Centru</h2>
                   <p class="blog-card-description">
-                    Analiza izjava predsednika Vučića o renoviranju i budućnosti
+                    Analiza izjava predsednika Vučića o renoviranju
                     Sava Centra kao kulturnog simbola Beograda.
                   </p>
                   <div class="blog-card-link">Proverite činjenice</div>

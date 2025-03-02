@@ -1,5 +1,23 @@
 :root {
-  --swiper-theme-color: #000;
+  --primary-color: #000000;
+  --primary-hover: #333333;
+  --secondary-color: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-light: #ffffff;
+  --bg-light: #ffffff;
+  --bg-gray: #f8f9fa;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --warning-color: #ffc107;
+  --border-radius: 25px;
+  --button-radius: 50px;
+  --card-radius: 10px;
+  --swiper-theme-color: #000000 !important;
+  --button-width: 250px;
+  --button-height: 55px;
 }
 
 * {
@@ -13,12 +31,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
   background: url("../images/background.svg") center center/cover no-repeat;
 }
 
 .hero-section {
   padding: 8rem 0;
+  padding-bottom: 0;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -34,16 +56,17 @@ body {
 
 .hero-title {
   font-size: 3.5rem;
-  color: #212529;
-  margin-bottom: 1.5rem;
   font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
   line-height: 1.2;
 }
 
 .hero-description {
   font-size: 1.25rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 .hero-buttons {
@@ -55,44 +78,53 @@ body {
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .hero-buttons {
+    flex-direction: row;
+  }
+}
+
 .upload-button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: #000000;
-  border-radius: 12px;
+  background: var(--primary-color);
+  border-radius: var(--button-radius);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .upload-button svg {
-  color: white;
+  color: var(--text-light);
 }
 
 .upload-button:hover {
-  background: #333333;
+  background: var(--primary-hover);
   transform: translateY(-2px);
 }
 
 .join-button {
   padding: 12px 24px;
-  background: transparent;
-  border: 2px solid #000000;
-  color: #000000;
-  border-radius: 12px;
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--text-light);
+  border-radius: var(--button-radius);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 200px;
+  width: var(--button-width);
+  height: var(--button-height);
   text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .join-button:hover {
-  background: #000000;
-  color: white;
+  background: transparent;
+  color: var(--primary-color);
   transform: translateY(-2px);
 }
 
@@ -170,22 +202,26 @@ h1 {
   right: -75px;
 }
 
-.file-input-wrapper {
+.file-input-wrapper{
+  width:100%;
+}
+
+.file-input-wrapper2 {
   position: relative;
   z-index: 1;
   padding: 2rem;
   border: 2px dashed #000000;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
 }
 
-.file-input-wrapper:hover {
+.file-input-wrapper2:hover {
   border-color: #000000;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .drag-text {
@@ -199,43 +235,49 @@ h1 {
 
 .custom-file-upload {
   display: inline-block;
-  padding: 12px 24px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  border-radius: 8px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-radius: var(--button-radius);
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
 }
 
 .custom-file-upload:hover {
-  background: rgba(0, 0, 0, 1);
-  transform: translateY(-1px);
+  background-color: var(--primary-hover);
 }
 
 #executeButton {
-  margin-top: 1rem;
-  padding: 14px 32px;
-  background: #212529;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--button-radius);
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
   transition: all 0.3s ease;
+  margin-top: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 #executeButton:hover {
-  background: #343a40;
-  transform: translateY(-1px);
+  background-color: transparent;
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 #executeButton:disabled {
-  background: #e9ecef;
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-primary);
   cursor: not-allowed;
+}
+
+#executeButton:disabled:hover {
+  background-color: transparent;
+  color: var(--primary-color);
   transform: none;
 }
 
@@ -261,39 +303,56 @@ h1 {
 }
 
 .primary-button {
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: 2px solid var(--primary-color);
+  border-radius: var(--button-radius);
   font-weight: 600;
-  color: #ffffff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  width: var(--button-width);
+  height: var(--button-height);
 }
 
 .primary-button:hover {
-  background-color: #0056b3;
+  background-color: transparent;
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
-/* Specifični stilovi za index stranicu */
 .hero-section .primary-button {
-  background-color: #000000;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-section .primary-button {
+    margin-right: 1rem;
+  }
 }
 
 .hero-section .primary-button:hover {
-  background-color: #333333;
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-/* Specifični stilovi za fact-check i consistency stranice */
 .fact-check .primary-button,
 .consistency .primary-button {
-  background-color: #007bff;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fact-check .primary-button:hover,
 .consistency .primary-button:hover {
-  background-color: #0056b3;
+  background-color: transparent;
+  color: var(--primary-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .progress-item {
@@ -399,17 +458,18 @@ footer {
 
 /* Navbar stilovi */
 .navbar {
-  background: #000000;
-  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  padding: 1rem 0;
 }
 
 .navbar-container {
-  max-width: 1200px;
+  max-width: 80%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -419,7 +479,7 @@ footer {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--text-light);
   margin-right: auto;
 }
 
@@ -429,9 +489,10 @@ footer {
 }
 
 .navbar-title {
-  font-weight: 600;
   font-size: 1.25rem;
-  white-space: nowrap;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-left: 0.5rem;
 }
 
 .navbar-links {
@@ -440,9 +501,9 @@ footer {
 }
 
 .navbar-links a {
-  color: #ffffff;
+  color: var(--text-light);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
@@ -490,7 +551,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #007bff;
+  color: var(--text-secondary);
 }
 
 .footer-bottom {
@@ -507,19 +568,27 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 1rem;
-    color: white;
+  margin-top: 1rem;
 }
 
 .social-icon {
   color: #ffffff;
   font-size: 1.5rem;
   transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
 }
 
 .social-icon:hover {
-  color: #007bff;
+  color: var(--text-secondary);
   transform: translateY(-3px);
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 
 /* Result page stilovi */
@@ -622,12 +691,24 @@ footer {
 }
 
 /* Responsive design */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   body {
     padding-bottom: 80px; /* Prostor za mobilni navbar */
   }
 
   .navbar {
+    display: block;
+    background-color: var(--primary-color);
+    padding: 0.75rem 0;
+  }
+
+  .navbar-container {
+    justify-content: flex-start;
+    padding: 0 1rem;
+    margin-left: 1.5rem;
+  }
+
+  .navbar-links {
     display: none;
   }
 
@@ -673,7 +754,7 @@ footer {
     padding: 1.5rem;
   }
 
-  .file-input-wrapper {
+  .file-input-wrapper2 {
     padding: 1.5rem;
   }
 
@@ -683,8 +764,8 @@ footer {
   }
 
   .primary-button {
-    width: 100%;
-    max-width: 300px;
+    width: var(--button-width);
+    max-width: var(--button-width);
   }
 
   .upload-button {
@@ -694,8 +775,8 @@ footer {
   }
 
   .join-button {
-    width: 100%;
-    max-width: 200px;
+    width: var(--button-width);
+    max-width: var(--button-width);
     text-align: center;
   }
 }
@@ -714,10 +795,13 @@ footer {
     width: 85%;
   }
 }
-
 /* Feature sekcija */
 .features-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
+}
+
+.top-section {
+  padding-top: 4rem;
 }
 
 .features-section-title {
@@ -729,39 +813,146 @@ footer {
 }
 
 .features-container {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
   position: relative;
-  margin-bottom: 5rem;
 }
 
 .feature-content {
-  flex: 1.3;
+  flex: 1;
   padding: 2rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  background-color: var(--bg-light);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.min-height-0 {
+  min-height: auto;
 }
 
 .feature-image {
-  flex: 0.7;
+  flex: 1;
   position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .feature-image img {
   width: 100%;
+  max-width: 400px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  margin: 0 auto;
 }
 
 .feature-image.no-border img {
   border: none;
   box-shadow: none;
+}
+
+/* Prelomna tačka za tablet i manje uređaje */
+@media (max-width: 992px) {
+  .features-container {
+    width: 90%;
+    flex-direction: column;
+    gap: 0; /* Uklonjen razmak između elemenata */
+  }
+
+  .features-container .feature-content {
+    order: 1;
+    width: 100%;
+    min-height: auto;
+    padding: 1.5rem;
+    margin-bottom: 0; /* Uklonjen donji margin */
+  }
+
+  .features-container .feature-image {
+    order: 2;
+    width: 100%;
+    min-height: auto;
+    margin-top: 0; /* Uklonjen gornji margin */
+    padding: 1.5rem 0;
+  }
+
+  .feature-image img {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .features-section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Dodatna podešavanja za mobilne uređaje */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar {
+    background-color: var(--primary-color);
+    padding: 0.75rem 0;
+  }
+
+  .navbar-container {
+    justify-content: flex-start;
+    padding: 0 1rem;
+  }
+
+  .features-container {
+    width: 95%;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-content {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-image {
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .feature-image img {
+    max-width: 60%;
+  }
+
+  .features-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .carousel-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media(max-width: 768px){
+  .features-section{
+    padding: 0;
+  }
+  .top-section{
+    padding-top:4rem;
+  }
+
 }
 
 .carousel-title {
@@ -788,10 +979,10 @@ footer {
 .blog-card {
   flex: 0 0 clamp(280px, calc(33.333% - 2rem), 300px);
   width: clamp(280px, calc(33.333% - 2rem), 300px);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1),
-    0 0 10px rgba(0, 0, 0, 0.1);
+  background: var(--bg-light);
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 20px var(--shadow-color), 0 6px 6px var(--shadow-color),
+    0 0 10px var(--shadow-color);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -852,10 +1043,10 @@ footer {
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 1.5rem;
-  background: #000000;
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-light);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--button-radius);
   font-weight: 500;
   transition: background-color 0.3s ease;
   justify-content: center;
@@ -867,9 +1058,9 @@ footer {
 }
 
 .blog-card-link:hover {
-  background: #333333;
+  background: var(--primary-hover);
   text-decoration: none;
-  color: white;
+  color: var(--text-light);
 }
 
 .carousel-button {
@@ -881,7 +1072,7 @@ footer {
   background: rgba(0, 0, 0, 0.8);
   border: none;
   border-radius: 50%;
-  color: white;
+  color: var(--text-light);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -891,7 +1082,7 @@ footer {
 }
 
 .carousel-button:hover {
-  background: #000000;
+  background: var(--primary-color);
 }
 
 .carousel-button.disabled {
@@ -919,47 +1110,6 @@ footer {
   height: 200px;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
-}
-
-@media (max-width: 768px) {
-  .features-container {
-    width: 90%;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .features-container:nth-child(3n + 1) {
-    flex-direction: column;
-  }
-
-  .features-container:nth-child(3n + 2) {
-    flex-direction: column-reverse;
-  }
-
-  .features-container:nth-child(3n) {
-    flex-direction: column;
-  }
-
-  .feature-content {
-    width: 100%;
-    padding: 1.5rem;
-  }
-
-  .feature-image {
-    width: 100%;
-  }
-
-  .features-section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .carousel-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    margin-top: 2rem;
-  }
 }
 
 @media (min-width: 577px) and (max-width: 1024px) {
@@ -1100,13 +1250,33 @@ footer {
   transition-timing-function: linear !important;
   position: relative;
 }
-.swiper-pagination-bullet {
-  background: #4f46e5;
-}
 
 .w-70 {
   width: 70%;
   margin: 0 auto;
+}
+
+/* Style for pagination */
+.swiper-pagination {
+  position: relative;
+  bottom: 0;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: var(--primary-color) !important;
+  opacity: 0.5 !important;
+  margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--primary-color) !important;
 }
 
 /* Add styling for carousel container */
@@ -1190,21 +1360,23 @@ footer {
 .swiper-pagination {
   position: relative;
   bottom: 0;
-  margin-top: 20px;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
   width: 100%;
   text-align: center;
 }
 
 .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: #000;
-  opacity: 0.5;
+  width: 12px !important;
+  height: 12px !important;
+  background: var(--primary-color) !important;
+  opacity: 0.5 !important;
+  margin: 0 5px !important;
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #000;
+  opacity: 1 !important;
+  background: var(--primary-color) !important;
 }
 
 /* Ensure the swiper wrapper is visible */
@@ -1364,3 +1536,151 @@ footer {
 .transparent {
   box-shadow: none !important   ;
 }
+
+/* Stilovi za dugmiće na fact_check i consistency stranicama */
+.fact-check .hero-buttons,
+.consistency .hero-buttons {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fact-check .primary-button,
+.consistency .primary-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--button-width);
+}
+
+/* Vertikalni raspored dugmića na velikim ekranima za fact_check i consistency stranice */
+@media (min-width: 768px) {
+  /* Zadržavamo horizontalni raspored samo za index stranicu */
+
+  .hero-section:not(.fact-check):not(.consistency) .primary-button {
+    margin-right: 1rem;
+  }
+
+  /* Osiguravamo da dugmići na fact_check i consistency stranicama ostanu vertikalni */
+  .fact-check .hero-buttons,
+  .consistency .hero-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Ensure consistent pagination across all pages */
+.swiper-pagination {
+  position: relative;
+  bottom: 0;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: var(--primary-color) !important;
+  opacity: 0.5 !important;
+  margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: var(--primary-color) !important;
+}
+
+/* Ensure consistent spacing for swiper wrapper on all pages */
+.swiper-wrapper {
+  width: 100% !important;
+  margin: 0 auto;
+  height: auto !important;
+  padding-bottom: 50px !important;
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Specific adjustments for fact-check page to match consistency page */
+.fact-check .swiper-wrapper,
+.consistency .swiper-wrapper {
+  padding-bottom: 50px !important;
+}
+
+.fact-check .swiper-pagination,
+.consistency .swiper-pagination {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ana */
+.hero-section-fact {
+    position: relative;
+    padding: 5rem 0 4rem;
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+.hero-content-fact {
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+     grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text-fact {
+    color: white;
+     margin-top: 30px;
+}
+
+.hero-title-fact {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-description-fact {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-illustration-fact {
+    position: relative;
+}
+
+.hero-illustration-fact img {
+    width: 100%;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+}
+
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .hero-content-fact {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-title-fact {
+        font-size: 2.5rem;
+    }
+
+    .hero-illustration-fact {
+        display: none;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}
+

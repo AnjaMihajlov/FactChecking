@@ -8,21 +8,18 @@ Deep Check
 {% block content %}
      <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">Host on the Cloud to Keep Growing</h1>
+        <h1 class="hero-title">AI platforma za analizu političkih izjava</h1>
         <p class="hero-description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,
-          voluptatem.
+            Ova platforma koristi veštačku inteligenciju za proveru tačnosti i doslednosti, odnosno kontradiktornosti izjava političara. Kroz detaljnu analizu i upoređivanje s pouzdanim izvorima, alat pruža objektivnu sliku političkih poruka, osnažuje građane da donose informisane odluke i podstiče transparentniju i odgovorniju javnu debatu.
         </p>
         <div class="hero-buttons">
-          <button class="primary-button">Proverite činjenice</button>
-          <button class="primary-button">Analizirajte doslednost</button>
+            <a class="primary-button" href="{% url 'fcHome' %}">Fact Checker</a>
+            <a class="primary-button" href="{% url 'ccHome' %}">Consistency Checker</a>
         </div>
       </div>
     </section>
 
-    <section class="features-section">
-      <h2 class="features-section-title">Naši AI alati</h2>
-
+    <section class="features-section top-section">
       <div class="features-container">
         <div class="feature-content">
           <div class="feature-header">
@@ -56,15 +53,15 @@ Deep Check
           <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
         <div class="feature-image">
-          <img src="{% static 'images/govor_politicara.jpg'  %}" alt="Feature 1" />
+          <img src="{% static 'images/politican_speking.png'  %}"  class="transparent" alt="Feature 1" />
         </div>
       </div>
     </section>
 
-    <section class="features-section reverse">
+    <section class="features-section reverse ">
       <div class="features-container">
         <div class="feature-image">
-          <img src="{% static 'images/AV.webp' %}" alt="Feature 2" />
+          <img src="{% static 'images/AV.svg' %}" class="transparent" alt="Feature 2" />
         </div>
         <div class="feature-content">
           <div class="feature-header">
@@ -141,7 +138,7 @@ Deep Check
           <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
         <div class="feature-image">
-          <img  src="{% static 'images/protesti.jpg'  %}" alt="Feature 3" />
+          <img  src="{% static 'images/protest.png'  %}" class="transparent" alt="Feature 3" />
         </div>
       </div>
     </section>
@@ -151,7 +148,7 @@ Deep Check
         <div class="feature-image">
           <img  src="{% static 'images/AI.png'  %}" class="transparent" alt="Feature 4" />
         </div>
-        <div class="feature-content">
+        <div class="feature-content min-height-0" >
           <div class="feature-header">
             <div class="feature-icon">
               <svg width="40"
@@ -179,4 +176,20 @@ Deep Check
         </div>
       </div>
     </section>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Animacija za hero sekciju
+        const heroTitle = document.querySelector(".hero-title");
+        if (heroTitle) {
+            heroTitle.style.opacity = "0";
+            heroTitle.style.transform = "translateY(20px)";
+            setTimeout(() => {
+                heroTitle.style.transition =
+                    "opacity 0.8s ease-out, transform 0.8s ease-out";
+                heroTitle.style.opacity = "1";
+                heroTitle.style.transform = "translateY(0)";
+            }, 100);
+        }
+    })
+    </script>
 {% endblock %}
