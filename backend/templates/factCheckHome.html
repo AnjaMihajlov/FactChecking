@@ -17,15 +17,15 @@ Fact Checker
 {% endblock %}
 
 {% block content %}
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Proverite istinitost izjava pomoću veštačke inteligencije</h1>
-            <p class="hero-description">
-                Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte dezinformacije, zaštitite se od manipulacije političara i osigurajte da informacije kojima verujete budu tačne.
-            </p>
-            <div class="hero-buttons">
+   <section class="hero-section hero-section-fact">
+        <div class="hero-content hero-content-fact">
+            <div class="hero-text hero-text-fact">
+                <h1 class="hero-title hero-title-fact">Proverite istinitost izjava pomoću veštačke inteligencije</h1>
+                <p class="hero-description hero-description-fact">
+                    Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tačne.
+                </p>
                 <div class="file-input-wrapper">
-                   <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
                         {% csrf_token %}
                         <div class="file-input-wrapper2">
                             <p class="drag-text">Prevucite fajl ovde ili</p>
@@ -37,14 +37,15 @@ Fact Checker
                         </div>
                         <button id="executeButton" type="submit" disabled>Izvršite proveru</button>
                     </form>
-
                 </div>
+            </div>
+            <div class="hero-illustration-fact">
+                <img src="{% static 'images/AI.png' %}" alt="AI Analysis Illustration">
             </div>
         </div>
     </section>
-   <h2 class="carousel-title">Neki zanimljivi govori</h2>
 
-    <!--HTML CODE-->
+    <h2 class="carousel-title">Neki zanimljivi govori</h2>
     <div class="carosel-container">
       <div class="relative">
         <button class="carousel-button prev group" id="slider-button-left">

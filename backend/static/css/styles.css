@@ -212,7 +212,7 @@ h1 {
   padding: 2rem;
   border: 2px dashed #000000;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   width: 100%;
   max-width: 400px;
@@ -221,7 +221,7 @@ h1 {
 
 .file-input-wrapper2:hover {
   border-color: #000000;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .drag-text {
@@ -1616,5 +1616,71 @@ footer {
 .consistency .swiper-pagination {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+/* Ana */
+.hero-section-fact {
+    position: relative;
+    padding: 5rem 0 4rem;
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+.hero-content-fact {
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+     grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text-fact {
+    color: white;
+     margin-top: 30px;
+}
+
+.hero-title-fact {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-description-fact {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-illustration-fact {
+    position: relative;
+}
+
+.hero-illustration-fact img {
+    width: 100%;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+}
+
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .hero-content-fact {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-title-fact {
+        font-size: 2.5rem;
+    }
+
+    .hero-illustration-fact {
+        display: none;
+        max-width: 80%;
+        margin: 0 auto;
+    }
 }
 
