@@ -11,4 +11,5 @@ urlpatterns = [
     path('ccHome', views.consistencyCheckHome, name='ccHome'),  # Link this to a view function in views.py
     path('ccResults', views.consistencyCheckResults, name='ccResults'),
     path('upload', views.uploadFile, name='uploadFile'),
+    path('factCheckFile',views.factCheckFile, name='factCheckFile')
 ]
