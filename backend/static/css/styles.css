@@ -55,8 +55,7 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 2.5rem;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -1641,8 +1640,6 @@ footer {
 }
 
 .hero-title-fact {
-  font-size: 3.5rem;
-  font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }

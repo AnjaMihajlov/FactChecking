@@ -36,3 +36,10 @@ def uploadFile(request):
         return redirect('fcResults')
 
     return render(request, 'factCheckHome.html')
+
+def factCheckFile(request):
+    print(request.POST['file'])
+    if request.method == 'POST' and 'file' in request.POST:
+        return render(request, 'factCheckResults.html',{'file':request.POST['file']})
+    else:
+        return render(request, 'factCheckResults.html', {'file': ''})

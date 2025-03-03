@@ -12,9 +12,9 @@
 <section class="hero-section hero-section-fact">
   <div class="hero-content hero-content-fact">
     <div class="hero-text hero-text-fact">
-      <h1 class="hero-title hero-title-fact">
+      <h3 class="hero-title hero-title-fact">
         Proverite istinitost izjava pomoću veštačke inteligencije
-      </h1>
+      </h3>
       <p class="hero-description hero-description-fact">
         Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i
         proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte
@@ -97,7 +97,18 @@
                 Analiza izjava predsednika Vučića o renoviranju Sava Centra kao
                 kulturnog simbola Beograda.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -114,12 +125,20 @@
                 Provera činjenica iz govora tokom zvanične posete Jagodini i
                 najave novih investicija u ovom regionu.
               </p>
-              <div
-                class="blog-card-link"
-                onclick="factCheck('data_jagodina.csv')"
-              >
-                Proverite činjenice
-              </div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  id="file"
+                  name="file"
+                  value="data_jagodina.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+
             </div>
           </a>
         </div>
@@ -136,7 +155,18 @@
                 Detaljna analiza ključnih izjava i podataka iznetih tokom
                 intervjua za Insajder televiziju.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -153,7 +183,18 @@
                 Retrospektiva i provera činjenica iz predizborne kampanje 2017.
                 godine i ispunjenja datih obećanja.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -170,7 +211,18 @@
                 Analiza ključnih izjava i odluka donetih tokom važnih sastanaka
                 u Predsedništvu Srbije.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -187,7 +239,18 @@
                 Provera činjenica iz govora o ulaganju u obrazovanje i podršci
                 mladim talentima.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                 <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>

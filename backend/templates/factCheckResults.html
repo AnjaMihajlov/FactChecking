@@ -5,12 +5,14 @@
     <!-- Rezultati će biti dinamički ubačeni ovde -->
   </div>
 </div>
+<span style="display:none" id="fileName" name="fileName" data-file="{{ file }}"> </span>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const qaContainer = document.getElementById("qaContainer");
+    var fileName = document.getElementById("fileName").getAttribute("data-file");
 
     // Učitavanje CSV fajla iz static foldera koristeći Papaparse
-    Papa.parse("{% static 'files/data_sm.csv' %}", {
+    Papa.parse("{% static 'files/' %}" + fileName, {
       download: true,
       header: true, // Prvi red je header sa nazivima kolona
       dynamicTyping: true, // Automatski konvertuje brojeve u brojčane vrednosti
@@ -19,7 +21,6 @@
         const parsedData = results.data;
 
         parsedData.forEach((result) => {
-          console.log(result);
           const qaItem = document.createElement("div");
           qaItem.className = "qa-item";
 
@@ -41,7 +42,6 @@
           }
 
           let odgovor = result.Tacan_odgovor;
-          console.log(odgovor);
           if (odgovor === null || odgovor === undefined) {
             odgovor = "Izrecena tvrdnja je tacna.";
           }
@@ -50,7 +50,7 @@
                       <div class="qa-question">${result.Pitanje}</div>
                       <div class="qa-answer">
                           ${iconSvg}
-                          <span>${result.Tacan_odgovor}</span> <!-- Prikazujemo tačan odgovor iz CSV-a -->
+                          <span>${odgovor}</span> <!-- Prikazujemo tačan odgovor iz CSV-a -->
                       </div>
                   `;
 
