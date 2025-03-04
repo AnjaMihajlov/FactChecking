@@ -253,7 +253,6 @@ nav{
 .page-sections {
     position: relative;
     width: 100%;
-    min-height: 100vh;
 }
 
 input[name="section-toggle"] {
@@ -267,8 +266,7 @@ input[name="section-toggle"] {
     left: 0;
     right: 0;
     transition: all 0.5s ease-in-out;
-    padding-top: 8rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
 }
 
 .section-1 {
@@ -286,8 +284,15 @@ input[name="section-toggle"] {
 }
 
 .hero-section-fact {
-    padding: 8rem 0;
+    padding-top: 7rem;
 }
+@media (max-width: 768px) {
+  .hero-section-fact {
+    padding-top: 4rem;
+}
+}
+
+
 
 .hero-content-fact {
     display: flex;
@@ -300,14 +305,10 @@ input[name="section-toggle"] {
 
 .hero-text-fact {
     flex: 1;
-    min-width: 300px;
-    max-width: 600px;
 }
 
 .hero-illustration-fact {
     flex: 1;
-    min-width: 350px;
-    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -325,9 +326,8 @@ input[name="section-toggle"] {
 }
 
 .carosel-container {
-    padding: 0rem 2rem;
     padding-bottom: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     overflow: visible;
 }
 
@@ -355,6 +355,7 @@ input[name="section-toggle"] {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .section-button .blog-card-link span {

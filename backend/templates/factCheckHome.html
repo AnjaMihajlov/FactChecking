@@ -17,275 +17,284 @@
 />
 {% endblock %}
 {% block content %}
-<input type="radio" name="section-toggle" id="section1" checked>
-<input type="radio" name="section-toggle" id="section2">
-
-<div class="page-sections">
-  <section class="hero-section hero-section-fact section-1">
-    <div class="hero-content hero-content-fact">
-      <div class="hero-text hero-text-fact">
-        <h3 class="hero-title hero-title-fact">
-          Proverite istinitost izjava pomoću veštačke inteligencije
-        </h3>
-        <p class="hero-description hero-description-fact">
-          Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i
-          proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte
-          dezinformacije i osigurajte da informacije kojima verujete budu tačne.
-        </p>
-        <div class="file-input-wrapper">
-          <form
-            method="post"
-            enctype="multipart/form-data"
-            action="{% url 'uploadFile' %}"
-          >
-            {% csrf_token %}
-            <div class="file-input-wrapper2">
-              <p class="drag-text">Prevucite fajl ovde ili</p>
-              <label for="fileInput" class="custom-file-upload">
-                Izaberite fajl
-              </label>
-              <input
-                type="file"
-                id="fileInput"
-                name="fileInput"
-                accept=".mp3,.mp4"
-              />
-              <div id="fileName"></div>
-            </div>
-            <button id="executeButton" type="submit" disabled>
-              Izvršite proveru
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="hero-illustration-fact">
-        <img
-          src="{% static 'images/hero_fc.svg' %}"
-          alt="AI Analysis Illustration"
-        />
-      </div>
-    </div>
-    <div class="section-button">
-      <label for="section2" class="blog-card-link">
-        <span>Mozda ce Vas zanimati ovi govori</span>
-        <i class="fas fa-arrow-right arrow-icon"></i>
-      </label>
-    </div>
-  </section>
-  
-  <section class="section-2">
-    <header>
-      <h3 class="carousel-title">Neki zanimljivi govori</h3>
-    </header>
-    <div class="carosel-container">
-      <div class="relative">
-        <button class="carousel-button prev group" id="slider-button-left">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button class="carousel-button next group" id="slider-button-right">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        <div class="swiper multiple-slide-carousel swiper-container">
-          <div class="swiper-wrapper mb-16">
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/vucic_sava_centar.jpg' %}"
-                  alt="Vučić u Sava Centru"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Izjave o Sava Centru</h2>
-                  <p class="blog-card-description">
-                    Analiza izjava predsednika Vučića u Sava Centru.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      name="file"
-                      value="data_base.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/vucic_jagodina.jpg' %}"
-                  alt="Vučić u Jagodini"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Kontramiting Jagodina</h2>
-                  <p class="blog-card-description">
-                    Provera činjenica iz govora tokom kontramitinga u Jagodini.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      id="file"
-                      name="file"
-                      value="data_jagodina.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/insajder_vucic.jpg' %}"
-                  alt="Insajder intervju"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Insajder intervju</h2>
-                  <p class="blog-card-description">
-                    Analiza ključnih izjava iznetih tokom
-                    intervjua za Insajder televiziju.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      name="file"
-                      value="data_base.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/izbori_2017.jpeg' %}"
-                  alt="Izbori 2017"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Izborna kampanja 2017</h2>
-                  <p class="blog-card-description">
-                    Provera činjenica iz predizborne kampanje 2017.
-                    godine.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      name="file"
-                      value="data_base.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/vucic_precednistvo.jpg' %}"
-                  alt="Predsedništvo"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
-                  <p class="blog-card-description">
-                    Analiza izjava sa obraćanja Aleksandra Vučića u predsedništvu.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      name="file"
-                      value="data_base.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="blog-card">
-                <img
-                  src="{% static 'images/vucic_smg.jpg' %}"
-                  alt="Matematička gimnazija"
-                  class="blog-card-image"
-                />
-                <div class="blog-card-content">
-                  <h2 class="blog-card-title">Kontramiting Sremska Mitrovica</h2>
-                  <p class="blog-card-description">
-                    Provera činjenica iz govora tokom kontramitinga u Sremskoj Mitrovici.
-                  </p>
-                  <form method="post" action="{% url 'factCheckFile'%}">
-                    {% csrf_token %}
-                     <input
-                      type="text"
-                      name="file"
-                      value="data_base.csv"
-                      style="display:none"
-                    />
-                    <button class="blog-card-link" type="submit">
-                      Proverite činjenice
-                    </button>
-                  </form>
-                </div>
-              </a>
-            </div>
+<section class="hero-section hero-section-fact">
+  <div class="hero-content hero-content-fact">
+    <div class="hero-text hero-text-fact">
+      <h1 class="hero-title hero-title-fact">
+        Proverite istinitost izjava pomoću veštačke inteligencije
+      </h1>
+      <p class="hero-description hero-description-fact">
+        Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i
+        proverava njihovu tačnost koristeći pouzdane izvore.
+      </p>
+      <div class="file-input-wrapper">
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="{% url 'uploadFile' %}"
+          id="uploadForm"
+          onsubmit="return showDialog(event)"
+        >
+          {% csrf_token %}
+          <div class="file-input-wrapper2">
+            <p class="drag-text">Prevucite fajl ovde ili</p>
+            <label for="fileInput" class="custom-file-upload">
+              Izaberite fajl
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              name="fileInput"
+              accept=".mp3,.mp4"
+            />
+            <div id="fileName"></div>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+          <button id="executeButton" type="submit" disabled>
+            Izvršite proveru
+          </button>
+        </form>
       </div>
     </div>
-    <div class="section-button">
-      <label for="section1" class="blog-card-link">
-        <i class="fas fa-arrow-left arrow-icon"></i>
-        <span>Unesite fajl</span>
-      </label>
+    <div class="hero-illustration-fact">
+      <img
+        src="{% static 'images/hero_fc.svg' %}"
+        alt="AI Analysis Illustration"
+      />
     </div>
-  </section>
+  </div>
+  <button id="executeButton" class="button-izvrsite-proveru" onclick="document.getElementById('zanimljivi-govori-section').scrollIntoView({behavior: 'smooth'})">
+    Neki zanimljivi govori
+    <i class="fas fa-arrow-down" style="margin-left: 10px;"></i>
+  </button>
+</section>
+
+<div id="zanimljivi-govori-section" style="position: relative; top: -50px; visibility: hidden;"></div>
+<h2 class="carousel-title">Neki zanimljivi govori</h2>
+
+<div class="carosel-container">
+  <div class="relative">
+    <button class="carousel-button prev group" id="slider-button-left">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="carousel-button next group" id="slider-button-right">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <div class="swiper multiple-slide-carousel swiper-container">
+      <div class="swiper-wrapper mb-16">
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_sava_centar.jpg' %}"
+              alt="Vučić u Sava Centru"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izjave o Sava Centru</h2>
+              <p class="blog-card-description">
+                Analiza izjava predsednika Vučića u Sava Centru.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_jagodina.jpg' %}"
+              alt="Vučić u Jagodini"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Kontramiting Jagodina</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz govora tokom kontramitinga u Jagodini.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  id="file"
+                  name="file"
+                  value="data_jagodina.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/insajder_vucic.jpg' %}"
+              alt="Insajder intervju"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Insajder intervju</h2>
+              <p class="blog-card-description">
+                Analiza ključnih izjava iznetih tokom
+                intervjua za Insajder televiziju.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/izbori_2017.jpeg' %}"
+              alt="Izbori 2017"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izborna kampanja 2017</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz predizborne kampanje 2017.
+                godine.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_precednistvo.jpg' %}"
+              alt="Predsedništvo"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
+              <p class="blog-card-description">
+                Analiza izjava sa obraćanja Aleksandra Vučića u predsedništvu.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_smg.jpg' %}"
+              alt="Matematička gimnazija"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Kontramiting Sremska Mitrovica</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz govora tokom kontramitinga u Sremskoj Mitrovici.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Dialog -->
+<div id="confirmDialog" class="dialog-overlay">
+  <div class="dialog-content">
+    <h2>Provera činjenica u toku</h2>
+    <p>Molimo vas da sačekate dok se analiza završi. Ovo može potrajati nekoliko minuta.</p>
+    <div class="dialog-spinner"></div>
+    <button onclick="hideDialog()" class="dialog-button">Otkaži</button>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/transition.js' %}"></script>
+<script>
+function showDialog(event) {
+  event.preventDefault();
+  document.getElementById('confirmDialog').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('uploadForm').submit();
+  }, 500);
+  return false;
+}
+
+function hideDialog() {
+  document.getElementById('confirmDialog').classList.remove('show');
+}
+</script>
 {% endblock %}

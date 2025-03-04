@@ -4,9 +4,15 @@
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <link
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
   rel="stylesheet"
+/>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/transition.css' %}"
 />
 {% endblock %} {% block content %}
 <section class="hero-section hero-section-fact">
@@ -17,14 +23,15 @@
       </h1>
       <p class="hero-description hero-description-fact">
         Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i
-        proverava njihovu tačnost koristeći pouzdane izvore. Otkrijte
-        dezinformacije i osigurajte da informacije kojima verujete budu tačne.
+        proverava njihovu tačnost koristeći pouzdane izvore.
       </p>
       <div class="file-input-wrapper">
         <form
           method="post"
           enctype="multipart/form-data"
           action="{% url 'uploadFile' %}"
+          id="uploadForm"
+          onsubmit="return showDialog(event)"
         >
           {% csrf_token %}
           <div class="file-input-wrapper2">
@@ -53,9 +60,15 @@
       />
     </div>
   </div>
+  <button id="executeButton" class="button-izvrsite-proveru" onclick="document.getElementById('zanimljivi-govori-section').scrollIntoView({behavior: 'smooth'})">
+    Neki zanimljivi govori
+    <i class="fas fa-arrow-down" style="margin-left: 10px;"></i>
+  </button>
 </section>
 
+<div id="zanimljivi-govori-section" style="position: relative; top: -50px; visibility: hidden;"></div>
 <h2 class="carousel-title">Neki zanimljivi govori</h2>
+
 <div class="carosel-container">
   <div class="relative">
     <button class="carousel-button prev group" id="slider-button-left">
@@ -94,10 +107,20 @@
             <div class="blog-card-content">
               <h2 class="blog-card-title">Izjave o Sava Centru</h2>
               <p class="blog-card-description">
-                Analiza izjava predsednika Vučića o renoviranju Sava Centra kao
-                kulturnog simbola Beograda.
+                Analiza izjava predsednika Vučića u Sava Centru.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -109,17 +132,22 @@
               class="blog-card-image"
             />
             <div class="blog-card-content">
-              <h2 class="blog-card-title">Poseta Jagodini</h2>
+              <h2 class="blog-card-title">Kontramiting Jagodina</h2>
               <p class="blog-card-description">
-                Provera činjenica iz govora tokom zvanične posete Jagodini i
-                najave novih investicija u ovom regionu.
+                Provera činjenica iz govora tokom kontramitinga u Jagodini.
               </p>
-              <div
-                class="blog-card-link"
-                onclick="factCheck('data_jagodina.csv')"
-              >
-                Proverite činjenice
-              </div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_jagodina.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -133,10 +161,21 @@
             <div class="blog-card-content">
               <h2 class="blog-card-title">Insajder intervju</h2>
               <p class="blog-card-description">
-                Detaljna analiza ključnih izjava i podataka iznetih tokom
+                Analiza ključnih izjava iznetih tokom
                 intervjua za Insajder televiziju.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -150,10 +189,21 @@
             <div class="blog-card-content">
               <h2 class="blog-card-title">Izborna kampanja 2017</h2>
               <p class="blog-card-description">
-                Retrospektiva i provera činjenica iz predizborne kampanje 2017.
-                godine i ispunjenja datih obećanja.
+                Provera činjenica iz predizborne kampanje 2017.
+                godine.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -167,10 +217,20 @@
             <div class="blog-card-content">
               <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
               <p class="blog-card-description">
-                Analiza ključnih izjava i odluka donetih tokom važnih sastanaka
-                u Predsedništvu Srbije.
+                Analiza izjava sa obraćanja Aleksandra Vučića u predsedništvu.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -182,12 +242,22 @@
               class="blog-card-image"
             />
             <div class="blog-card-content">
-              <h2 class="blog-card-title">Poseta Matematičkoj gimnaziji</h2>
+              <h2 class="blog-card-title">Kontramiting Sremska Mitrovica</h2>
               <p class="blog-card-description">
-                Provera činjenica iz govora o ulaganju u obrazovanje i podršci
-                mladim talentima.
+                Provera činjenica iz govora tokom kontramitinga u Sremskoj Mitrovici.
               </p>
-              <div class="blog-card-link">Proverite činjenice</div>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display:none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
             </div>
           </a>
         </div>
@@ -196,6 +266,31 @@
     </div>
   </div>
 </div>
+
+<!-- Dialog -->
+<div id="confirmDialog" class="dialog-overlay">
+  <div class="dialog-content">
+    <h2>Provera kontradiktornosti u toku</h2>
+    <p>Molimo vas da sačekate dok se analiza završi. Ovo može potrajati nekoliko minuta.</p>
+    <div class="dialog-spinner"></div>
+    <button onclick="hideDialog()" class="dialog-button">Otkaži</button>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script>
+function showDialog(event) {
+  event.preventDefault();
+  document.getElementById('confirmDialog').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('uploadForm').submit();
+  }, 500);
+  return false;
+}
+
+function hideDialog() {
+  document.getElementById('confirmDialog').classList.remove('show');
+}
+</script>
 {% endblock %}
