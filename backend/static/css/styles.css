@@ -488,8 +488,8 @@ footer {
 
 .navbar-title {
   font-size: 1.25rem;
-  font-weight: 600;
-  font-family: EffraVFWghtItal-SemiBold, 'Effra VF Trial';
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
   color: var(--text-light);
   margin-left: 0.5rem;
 }
@@ -721,7 +721,6 @@ footer {
 
   .result-container {
     width: 100%;
-    margin-top: 1rem;
     padding: 1rem;
   }
 
@@ -798,7 +797,6 @@ footer {
 
   .hero-section-fact {
     min-height: auto;
-    padding: 2rem 0 0 0;
   }
 
   .hero-content-fact {
@@ -997,6 +995,8 @@ footer {
     margin-bottom: 1.5rem;
     margin-top: 2rem;
   }
+
+  
 }
 
 @media (max-width: 768px) {
@@ -1222,8 +1222,7 @@ footer {
   color: #666;
   line-height: 1.8;
   margin-bottom: 3rem;
-  font-size: 1.25rem;
-  text-align: justify;
+  text-align: start;
   padding: 0 2rem;
 }
 
@@ -1237,7 +1236,7 @@ footer {
 
 .team-member {
   text-align: center;
-  width: 200px;
+  width: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1249,10 +1248,10 @@ footer {
   margin: 0 auto;
   margin-bottom: 3rem;
 }
-
+ 
 .member-image {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
@@ -1321,8 +1320,8 @@ footer {
   }
 
   .member-image {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 
   .member-name {
@@ -1778,7 +1777,7 @@ footer {
   }
 
   .section-description {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .hero-title-fact {
@@ -1933,4 +1932,8 @@ footer {
   .dialog-content p {
     font-size: 0.9rem;
   }
+}
+
+.font-wight-800{
+  font-weight: 800;
 }

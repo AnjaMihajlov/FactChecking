@@ -33,7 +33,7 @@
           enctype="multipart/form-data"
           action="{% url 'uploadFile' %}"
           id="uploadForm"
-          onsubmit="return showDialog(event)"
+          onsubmit="return showInputDialog(event)"
         >
           {% csrf_token %}
           <div class="file-input-wrapper2">
@@ -271,7 +271,7 @@
 </div>
 
 <!-- Dialog -->
-<div id="confirmDialog" class="dialog-overlay">
+<div id="confirmDialog" class="dialog-overlay" onclick="handleOverlayClick(event)">
   <div class="dialog-content">
     <h2>Provera činjenica u toku</h2>
     <p>Molimo vas da sačekate dok se analiza završi. Ovo može potrajati nekoliko minuta.</p>
@@ -280,21 +280,171 @@
   </div>
 </div>
 
+<!-- Input Dialog -->
+<div id="inputDialog" class="dialog-overlay input-dialog" onclick="handleOverlayClick(event)">
+  <div class="dialog-content">
+    <h2>Unesite API ključeve</h2>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input1">DeepSeek</label>
+        <a href="#" onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');">Nemate API?</a>
+      </div>
+      <input type="text" id="input1" class="input-field" placeholder="Unesite DeepSeek API ključ">
+    </div>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input2">SerpApi</label>
+        <a href="#" onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');">Nemate API?</a>
+      </div>
+      <input type="text" id="input2" class="input-field" placeholder="Unesite SerpApi API ključ">
+    </div>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input3">Jina</label>
+        <a href="#" onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');">Nemate API?</a>
+      </div>
+      <input type="text" id="input3" class="input-field" placeholder="Unesite Jina API ključ">
+    </div>
+    <div class="dialog-buttons">
+      <button onclick="hideInputDialog()" class="dialog-button secondary">Otkaži</button>
+      <button onclick="hideInputDialog()" class="dialog-button">Nastavi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Terms Dialog -->
+<div id="termsDialog" class="dialog-overlay terms-dialog" onclick="handleOverlayClick(event)">
+  <div class="dialog-content">
+    <h2>Uslovi korišćenja</h2>
+    <div class="terms-text"><h2>1. Introduction</h2>
+      By accessing or using the software system (hereinafter referred to as the "System"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, you must not use the System. The System is designed to provide advanced analytical capabilities by integrating external APIs, and it requires users to input their own API keys for these external services.
+      <h2>2. User Responsibilities</h2>
+      <h4>2.1 API Key Usage:</h4>
+      You are solely responsible for obtaining and managing your API keys for external services.
+      You must ensure that your API keys are kept secure and confidential. Sharing your API keys with unauthorized parties is strictly prohibited.
+      The System will not store or log your API keys. However, you acknowledge that the System will temporarily use your API keys to process requests through the external services.
+      <h4>2.2 Compliance with External Service Terms:</h4>
+      You agree to comply with the terms and conditions, privacy policies, and usage limits of the external services whose APIs you integrate into the System.
+      The System is not responsible for any actions taken by external services, including but not limited to rate limiting, suspension, or termination of your access.
+      <h4>2.3 Accuracy of Data:</h4>
+      You are responsible for the accuracy and legality of the data you input into the System.
+      The System is not liable for any errors, inconsistencies, or inaccuracies in the results generated through the use of external APIs.
+      <h2>3. System Functionality</h2>
+      <h4>3.1 External API Integration:</h4>
+      The System relies on external APIs to provide certain functionalities. These APIs are not under our control, and their availability, accuracy, or performance may vary.
+      We do not guarantee uninterrupted access to external APIs or the System's functionality.
+      <h4>3.2 Data Processing:</h4>
+      The System processes data using the external APIs you provide. You acknowledge that the System does not store or retain any data processed through these APIs unless explicitly stated otherwise.
+      <h2>4. Limitation of Liability</h2>
+      <h4>4.1 No Warranty:</h4>
+      The System is provided "as is" and "as available" without any warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+      We do not guarantee that the System will meet your requirements or that its operation will be error-free or uninterrupted.
+      <h4>4.2 Indemnification:</h4>
+      You agree to indemnify and hold us harmless from any claims, damages, or losses arising from your use of the System, including but not limited to misuse of API keys, violation of external service terms, or inaccurate data input.
+      <h2>5. Termination</h2>
+      <h4>5.1 User Termination:</h4>
+      You may stop using the System at any time by discontinuing your access and removing your API keys.
+      <h4>5.2 System Termination:</h4>
+      We reserve the right to suspend or terminate your access to the System at any time, with or without notice, for any reason, including but not limited to violation of these Terms and Conditions.
+      <h2>6. Amendments</h2>
+      We reserve the right to modify these Terms and Conditions at any time. Any changes will be effective immediately upon posting. Your continued use of the System after such changes constitutes your acceptance of the revised terms.
+      <h2>7. Governing Law</h2>
+      These Terms and Conditions shall be governed by and construed in accordance with the laws of [Insert Jurisdiction]. Any disputes arising from your use of the System shall be resolved exclusively in the courts of [Insert Jurisdiction].
+      <h2>8. Contact Information</h2>
+      If you have any questions or concerns regarding these Terms and Conditions, please contact us at [Insert Contact Information].</div>
+      <hr>
+    <div class="dialog-buttons">
+      <button onclick="hideTermsDialog()" class="dialog-button secondary">Odbij</button>
+      <button onclick="acceptTerms()" class="dialog-button">Prihvati</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{% static 'js/main.js' %}"></script>
-<script src="{% static 'js/transition.js' %}"></script>
 <script>
 function showDialog(event) {
   event.preventDefault();
-  document.getElementById('confirmDialog').classList.add('show');
-  setTimeout(() => {
-    document.getElementById('uploadForm').submit();
-  }, 500);
+  const dialog = document.getElementById('confirmDialog');
+  dialog.classList.add('show');
+  document.body.style.overflow = 'hidden';
   return false;
 }
 
 function hideDialog() {
-  document.getElementById('confirmDialog').classList.remove('show');
+  const dialog = document.getElementById('confirmDialog');
+  dialog.classList.add('hiding');
+  document.body.style.overflow = '';
+  
+  setTimeout(() => {
+    dialog.classList.remove('show', 'hiding');
+  }, 300);
 }
+
+function handleOverlayClick(event) {
+  if (event.target.classList.contains('dialog-overlay')) {
+    event.stopPropagation();
+  }
+}
+
+// Prevent form submission on dialog close
+document.querySelector('.dialog-button').addEventListener('click', function(e) {
+  e.preventDefault();
+  hideDialog();
+});
+
+function showInputDialog(event) {
+  event.preventDefault();
+  const dialog = document.getElementById('inputDialog');
+  dialog.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  return false;
+}
+
+function hideInputDialog() {
+  const dialog = document.getElementById('inputDialog');
+  dialog.classList.add('hiding');
+  document.body.style.overflow = '';
+  
+  setTimeout(() => {
+    dialog.classList.remove('show', 'hiding');
+  }, 300);
+}
+
+// Update form submit handler
+document.getElementById('uploadForm').onsubmit = showInputDialog;
+
+function showTermsDialog() {
+  hideInputDialog();
+  const dialog = document.getElementById('termsDialog');
+  dialog.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideTermsDialog() {
+  const dialog = document.getElementById('termsDialog');
+  dialog.classList.add('hiding');
+  document.body.style.overflow = '';
+  
+  setTimeout(() => {
+    dialog.classList.remove('show', 'hiding');
+  }, 300);
+}
+
+function acceptTerms() {
+  hideTermsDialog();
+  const dialog = document.getElementById('confirmDialog');
+  dialog.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+  document.getElementById('uploadForm').submit();
+  }, 5000);
+}
+
+// Update dialog buttons
+document.querySelector('.dialog-buttons .dialog-button:not(.secondary)').onclick = function(e) {
+  e.preventDefault();
+  showTermsDialog();
+};
 </script>
 {% endblock %}

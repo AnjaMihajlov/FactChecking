@@ -22,6 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     {% block links %} {% endblock %}
   </head>
   <body>
@@ -44,7 +45,7 @@
     <!-- Mobilni navbar -->
     <nav class="mobile-navbar">
       <div class="mobile-nav-items">
-        <a href="{% url 'home' %}" class="mobile-nav-item active">
+        <a href="{% url 'home' %}" class="mobile-nav-item">
           <svg id="Layer_4" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 229.59 230.79" width="24"
           height="24"
           stroke="currentColor"
@@ -243,5 +244,6 @@
         <div>&copy; 2024 Fact Checking AI. Sva prava zadržana.</div>
       </div>
     </footer>
+    <script src="{% static 'js/navbar.js' %}"></script>
   </body>
 </html>

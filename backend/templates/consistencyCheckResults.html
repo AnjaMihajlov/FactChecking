@@ -7,27 +7,7 @@ Fact Checking
 {% block content %}
     <div class="result-container">
         <h1 style="text-align: center; margin-bottom: 2rem;">Vaši rezultati</h1>
-        <div style="position: fixed; top: 100px; right: 20px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
-            <h4 style="margin-bottom: 10px;">Legenda</h4>
-            <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                <svg class="answer-icon correct" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; margin-right: 8px;">
-                    <path d="M20 6L9 17L4 12"></path>
-                </svg>
-                <span>Konzistentna izjava</span>
-            </div>
-            <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                <svg class="answer-icon error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; margin-right: 8px;">
-                    <path d="M18 6L6 18M6 6l12 12"></path>
-                </svg>
-                <span>Nekonzistentna izjava</span>
-            </div>
-            <div style="display: flex; align-items: center;">
-                <svg class="answer-icon warning" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="3" style="width: 20px; height: 20px; margin-right: 8px;">
-                    <path d="M5 12h14"></path>
-                </svg>
-                <span>Nije moguće utvrditi</span>
-            </div>
-        </div>
+        
         <div id="qaContainer">
             <!-- Rezultati će biti dinamički ubačeni ovde -->
         </div>
