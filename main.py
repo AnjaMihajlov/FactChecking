@@ -9,7 +9,7 @@ import csv
 # =======================
 # Configuration Constants
 # =======================
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
 JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
@@ -26,7 +26,7 @@ DEFAULT_MODEL = "openai/gpt-4o-2024-11-20"
 
 
 #Limits for search
-DEFAULT_ITERATION = 2
+DEFAULT_ITERATION = 3
 LINKS_LIMIT = 5
 
 QUERY_INDEX = 0
@@ -103,6 +103,7 @@ async def generate_search_queries_async(session, user_query):
         "You are an expert research assistant. Given the user's query, generate up to four distinct, "
         "precise search queries that would help gather comprehensive information on the topic. "
         "Return only a Python list of strings, for example: ['query1', 'query2', 'query3']."
+        "Always use single quotes."
     )
     messages = [
         {"role": "system", "content": "You are a helpful and precise research assistant."},
@@ -239,6 +240,7 @@ async def get_new_search_queries_async(session, user_query, previous_search_quer
         "If further research is needed, provide up to four new search queries as a Python list (for example, "
         "['new query1', 'new query2']). If you believe no further research is needed, respond with exactly <done>."
         "\nOutput only a Python list or the token <done> without any additional text."
+        "Always use single quotes."
     )
     messages = [
         {"role": "system", "content": "You are a systematic research planner."},
@@ -394,7 +396,10 @@ async def async_main(user_query, session):
     if not new_search_queries:
         return "No search queries were generated."
 
-    all_search_queries.extend(new_search_queries)       # Add the generated queries to the list
+    all_search_queries.extend(new_search_queries)
+    print("********")
+    print(all_search_queries)# Add the generated queries to the list
+    print("********")
 
     # Perform the search iteratively up to the iteration limit
     while iteration < iter_limit:
@@ -439,7 +444,7 @@ async def async_main(user_query, session):
 
     # Generate the final report based on the aggregated contexts
     final_report = await generate_final_report_async(session, user_query, aggregated_contexts)
-
+    #print(final_report)
     binary_answer = final_report[:2]
     if binary_answer=="--":
         right_answer = final_report[2:]
