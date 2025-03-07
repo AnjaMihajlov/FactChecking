@@ -595,9 +595,9 @@ def write_answers_csv(csv_filename, log_filename, data, rows, links_used, right_
        
 
 def main():
-    text = read_file_text(PATH_TO_SPEECH_FILE)
-    res = asyncio.run(asyncio_extract_questions(text))
-    write_questions_csv(PATH_TO_CSV_FILE,res)
+    #text = read_file_text(PATH_TO_SPEECH_FILE)
+    #res = asyncio.run(asyncio_extract_questions(text))
+    #write_questions_csv(PATH_TO_CSV_FILE,res)
 
     input_file, queries = read_file_csv(PATH_TO_CSV_FILE)
     results, links_used, right_answers = asyncio.run(process_queries(queries))
