@@ -1,108 +1,542 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-Fact Checking
-{% endblock %}
-
-{% block content %}
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Proverite istinitost izjava pomocu AI </h1>
-            <p class="hero-description"> Nas AI sistem automatski analizira govor, identifikuje kljucne tvrdje i proverava njihovu tacnost koristeci pouzdane izvore. Otkrijte dezinformacije i osigurajte da informacije kojima verujete budu tacne.</p>
-            <div class="hero-buttons">
-                <div>
-                   <form method="post" enctype="multipart/form-data" action="{% url 'uploadFile' %}">
-                        {% csrf_token %}
-                        <div class="file-input-wrapper">
-                            <p class="drag-text">Prevucite fajl ovde ili</p>
-                            <label for="fileInput" class="custom-file-upload">
-                                Izaberite fajl
-                            </label>
-                            <input type="file" id="fileInput" name="fileInput" accept=".mp3,.mp4">
-                            <div id="fileName"></div>
-                        </div>
-                        <button id="executeButton" type="submit" disabled>Izvršite proveru</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="blog-cards-container">
-        <button class="carousel-button prev">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 19l-7-7 7-7"/>
-            </svg>
-        </button>
-        <button class="carousel-button next">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 5l7 7-7 7"/>
-            </svg>
-        </button>
-        <div class="blog-cards">
-            <a href="#" class="blog-card">
-                <img src="images/vucic_sava_centar.jpg" alt="Vučić u Sava Centru" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Izjave o Sava Centru</h2>
-                    <p class="blog-card-description">Analiza izjava predsednika Vučića o renoviranju i budućnosti Sava Centra kao kulturnog simbola Beograda.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="images/vucic_jagodina.jpg" alt="Vučić u Jagodini" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Poseta Jagodini</h2>
-                    <p class="blog-card-description">Provera činjenica iz govora tokom zvanične posete Jagodini i najave novih investicija u ovom regionu.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="images/insajder_vucic.jpg" alt="Insajder intervju" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Insajder intervju</h2>
-                    <p class="blog-card-description">Detaljna analiza ključnih izjava i podataka iznetih tokom intervjua za Insajder televiziju.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="images/izbori_2017.jpeg" alt="Izbori 2017" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Izborna kampanja 2017</h2>
-                    <p class="blog-card-description">Retrospektiva i provera činjenica iz predizborne kampanje 2017. godine i ispunjenja datih obećanja.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="images/vucic_precednistvo.jpg" alt="Predsedništvo" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
-                    <p class="blog-card-description">Analiza ključnih izjava i odluka donetih tokom važnih sastanaka u Predsedništvu Srbije.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="blog-card">
-                <img src="images/vucic_smg.jpg" alt="Matematička gimnazija" class="blog-card-image">
-                <div class="blog-card-content">
-                    <h2 class="blog-card-title">Poseta Matematičkoj gimnaziji</h2>
-                    <p class="blog-card-description">Provera činjenica iz govora o ulaganju u obrazovanje i podršci mladim talentima.</p>
-                    <div class="blog-card-link">
-                        Proverite činjenice
-                    </div>
-                </div>
-            </a>
-        </div>
+{% extends 'base.html' %} {% load static %} {% block title %} Fact Checker
+{%endblock %} {% block links %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+<link
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/transition.css' %}"
+/>
+{% endblock %} {% block content %}
+<section class="hero-section hero-section-fact">
+  <div class="hero-content hero-content-fact">
+    <div class="hero-text hero-text-fact">
+      <h1 class="hero-title hero-title-fact">
+        Proverite istinitost izjava pomoću veštačke inteligencije
+      </h1>
+      <p class="hero-description hero-description-fact">
+        Naš AI sistem automatski analizira govor, identifikuje ključne tvrdnje i
+        proverava njihovu tačnost koristeći pouzdane izvore.
+      </p>
+      <div class="file-input-wrapper">
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="{% url 'uploadFile' %}"
+          id="uploadForm"
+          onsubmit="return showInputDialog(event)"
+        >
+          {% csrf_token %}
+          <div class="file-input-wrapper2">
+            <p class="drag-text">Prevucite fajl ovde ili</p>
+            <label for="fileInput" class="custom-file-upload">
+              Izaberite fajl
+            </label>
+            <input
+              type="file"
+              id="fileInput"
+              name="fileInput"
+              accept=".mp3,.mp4"
+            />
+            <div id="fileName"></div>
+          </div>
+          <button id="executeButton" type="submit" disabled>
+            Izvršite proveru
+          </button>
+        </form>
+      </div>
     </div>
+    <div class="hero-illustration-fact">
+      <img
+        src="{% static 'images/hero_fc.svg' %}"
+        alt="AI Analysis Illustration"
+      />
+    </div>
+  </div>
+  <button
+    id="executeButton"
+    class="button-izvrsite-proveru"
+    onclick="document.getElementById('zanimljivi-govori-section').scrollIntoView({behavior: 'smooth'})"
+  >
+    Neki zanimljivi govori
+    <i class="fas fa-arrow-down" style="margin-left: 10px"></i>
+  </button>
+</section>
 
-    <script src="{% static 'js/main.js' %}"></script>
+<div
+  id="zanimljivi-govori-section"
+  style="position: relative; top: -50px; visibility: hidden"
+></div>
+<h2 class="carousel-title">Neki zanimljivi govori</h2>
+
+<div class="carosel-container">
+  <div class="relative">
+    <button class="carousel-button prev group" id="slider-button-left">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="carousel-button next group" id="slider-button-right">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <div class="swiper multiple-slide-carousel swiper-container">
+      <div class="swiper-wrapper mb-16">
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_sava_centar.jpg' %}"
+              alt="Vučić u Sava Centru"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izjave o Sava Centru</h2>
+              <p class="blog-card-description">
+                Analiza izjava predsednika Vučića u Sava Centru.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_jagodina.jpg' %}"
+              alt="Vučić u Jagodini"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Kontramiting Jagodina</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz govora tokom kontramitinga u Jagodini.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  id="file"
+                  name="file"
+                  value="data_jagodina.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/insajder_vucic.jpg' %}"
+              alt="Insajder intervju"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Insajder intervju</h2>
+              <p class="blog-card-description">
+                Analiza ključnih izjava iznetih tokom intervjua za Insajder
+                televiziju.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="javascript:void(0);" class="blog-card">
+            <img
+              src="{% static 'images/izbori_2017.jpeg' %}"
+              alt="Izbori 2017"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izborna kampanja 2017</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz predizborne kampanje 2017. godine.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_precednistvo.jpg' %}"
+              alt="Predsedništvo"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Izjave iz Predsedništva</h2>
+              <p class="blog-card-description">
+                Analiza izjava sa obraćanja Aleksandra Vučića u predsedništvu.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#" class="blog-card">
+            <img
+              src="{% static 'images/vucic_smg.jpg' %}"
+              alt="Matematička gimnazija"
+              class="blog-card-image"
+            />
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Kontramiting Sremska Mitrovica</h2>
+              <p class="blog-card-description">
+                Provera činjenica iz govora tokom kontramitinga u Sremskoj
+                Mitrovici.
+              </p>
+              <form method="post" action="{% url 'factCheckFile'%}">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  name="file"
+                  value="data_base.csv"
+                  style="display: none"
+                />
+                <button class="blog-card-link" type="submit">
+                  Proverite činjenice
+                </button>
+              </form>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Dialog -->
+<div
+  id="confirmDialog"
+  class="dialog-overlay"
+  onclick="handleOverlayClick(event)"
+>
+  <div class="dialog-content">
+    <h2>Provera činjenica u toku</h2>
+    <p>
+      Molimo vas da sačekate dok se analiza završi. Ovo može potrajati nekoliko
+      minuta.
+    </p>
+    <div class="dialog-spinner"></div>
+    <button onclick="hideDialog()" class="dialog-button">Otkaži</button>
+  </div>
+</div>
+
+<!-- Input Dialog -->
+<div
+  id="inputDialog"
+  class="dialog-overlay input-dialog"
+  onclick="handleOverlayClick(event)"
+>
+  <div class="dialog-content">
+    <h2>Unesite API ključeve</h2>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input1">DeepSeek</label>
+        <a
+          href="https://platform.deepseek.com/api_keys"
+          onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');"
+          >Nemate API?</a
+        >
+      </div>
+      <input
+        type="text"
+        id="input1"
+        class="input-field"
+        placeholder="Unesite DeepSeek API ključ"
+      />
+    </div>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input2">SerpApi</label>
+        <a
+          href="#"
+          onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');"
+          >Nemate API?</a
+        >
+      </div>
+      <input
+        type="text"
+        id="input2"
+        class="input-field"
+        placeholder="Unesite SerpApi API ključ"
+      />
+    </div>
+    <div class="input-group">
+      <div class="input-group-header">
+        <label class="input-label" for="input3">Jina</label>
+        <a
+          href="https://jina.ai/?newKey"
+          onclick="event.preventDefault(); alert('Ova funkcionalnost će uskoro biti dostupna.');"
+          >Nemate API?</a
+        >
+      </div>
+      <input
+        type="text"
+        id="input3"
+        class="input-field"
+        placeholder="Unesite Jina API ključ"
+      />
+    </div>
+    <div class="dialog-buttons">
+      <button onclick="hideInputDialog()" class="dialog-button secondary">
+        Otkaži
+      </button>
+      <button onclick="hideInputDialog()" class="dialog-button">Nastavi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Terms Dialog -->
+<div
+  id="termsDialog"
+  class="dialog-overlay terms-dialog"
+  onclick="handleOverlayClick(event)"
+>
+  <div class="dialog-content">
+    <h2>Uslovi korišćenja</h2>
+    <div class="terms-text">
+      <h2>1. Introduction</h2>
+      By accessing or using the software system (hereinafter referred to as the
+      "System"), you agree to be bound by these Terms and Conditions. If you do
+      not agree to these terms, you must not use the System. The System is
+      designed to provide advanced analytical capabilities by integrating
+      external APIs, and it requires users to input their own API keys for these
+      external services.
+      <h2>2. User Responsibilities</h2>
+      <h4>2.1 API Key Usage:</h4>
+      You are solely responsible for obtaining and managing your API keys for
+      external services. You must ensure that your API keys are kept secure and
+      confidential. Sharing your API keys with unauthorized parties is strictly
+      prohibited. The System will not store or log your API keys. However, you
+      acknowledge that the System will temporarily use your API keys to process
+      requests through the external services.
+      <h4>2.2 Compliance with External Service Terms:</h4>
+      You agree to comply with the terms and conditions, privacy policies, and
+      usage limits of the external services whose APIs you integrate into the
+      System. The System is not responsible for any actions taken by external
+      services, including but not limited to rate limiting, suspension, or
+      termination of your access.
+      <h4>2.3 Accuracy of Data:</h4>
+      You are responsible for the accuracy and legality of the data you input
+      into the System. The System is not liable for any errors, inconsistencies,
+      or inaccuracies in the results generated through the use of external APIs.
+      <h2>3. System Functionality</h2>
+      <h4>3.1 External API Integration:</h4>
+      The System relies on external APIs to provide certain functionalities.
+      These APIs are not under our control, and their availability, accuracy, or
+      performance may vary. We do not guarantee uninterrupted access to external
+      APIs or the System's functionality.
+      <h4>3.2 Data Processing:</h4>
+      The System processes data using the external APIs you provide. You
+      acknowledge that the System does not store or retain any data processed
+      through these APIs unless explicitly stated otherwise.
+      <h2>4. Limitation of Liability</h2>
+      <h4>4.1 No Warranty:</h4>
+      The System is provided "as is" and "as available" without any warranties,
+      express or implied, including but not limited to warranties of
+      merchantability, fitness for a particular purpose, or non-infringement. We
+      do not guarantee that the System will meet your requirements or that its
+      operation will be error-free or uninterrupted.
+      <h4>4.2 Indemnification:</h4>
+      You agree to indemnify and hold us harmless from any claims, damages, or
+      losses arising from your use of the System, including but not limited to
+      misuse of API keys, violation of external service terms, or inaccurate
+      data input.
+      <h2>5. Termination</h2>
+      <h4>5.1 User Termination:</h4>
+      You may stop using the System at any time by discontinuing your access and
+      removing your API keys.
+      <h4>5.2 System Termination:</h4>
+      We reserve the right to suspend or terminate your access to the System at
+      any time, with or without notice, for any reason, including but not
+      limited to violation of these Terms and Conditions.
+      <h2>6. Amendments</h2>
+      We reserve the right to modify these Terms and Conditions at any time. Any
+      changes will be effective immediately upon posting. Your continued use of
+      the System after such changes constitutes your acceptance of the revised
+      terms.
+      <h2>7. Governing Law</h2>
+      These Terms and Conditions shall be governed by and construed in
+      accordance with the laws of [Insert Jurisdiction]. Any disputes arising
+      from your use of the System shall be resolved exclusively in the courts of
+      [Insert Jurisdiction].
+      <h2>8. Contact Information</h2>
+      If you have any questions or concerns regarding these Terms and
+      Conditions, please contact us at [Insert Contact Information].
+    </div>
+    <hr />
+    <div class="dialog-buttons">
+      <button onclick="hideTermsDialog()" class="dialog-button secondary">
+        Odbij
+      </button>
+      <button onclick="acceptTerms()" class="dialog-button">Prihvati</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+  function showDialog(event) {
+    event.preventDefault();
+    const dialog = document.getElementById("confirmDialog");
+    dialog.classList.add("show");
+    document.body.style.overflow = "hidden";
+    return false;
+  }
+
+  function hideDialog() {
+    const dialog = document.getElementById("confirmDialog");
+    dialog.classList.add("hiding");
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      dialog.classList.remove("show", "hiding");
+    }, 300);
+  }
+
+  function handleOverlayClick(event) {
+    if (event.target.classList.contains("dialog-overlay")) {
+      event.stopPropagation();
+    }
+  }
+
+  // Prevent form submission on dialog close
+  document
+    .querySelector(".dialog-button")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      hideDialog();
+    });
+
+  function showInputDialog(event) {
+    event.preventDefault();
+    const dialog = document.getElementById("inputDialog");
+    dialog.classList.add("show");
+    document.body.style.overflow = "hidden";
+    return false;
+  }
+
+  function hideInputDialog() {
+    const dialog = document.getElementById("inputDialog");
+    dialog.classList.add("hiding");
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      dialog.classList.remove("show", "hiding");
+    }, 300);
+  }
+
+  // Update form submit handler
+  document.getElementById("uploadForm").onsubmit = showInputDialog;
+
+  function showTermsDialog() {
+    hideInputDialog();
+    const dialog = document.getElementById("termsDialog");
+    dialog.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+
+  function hideTermsDialog() {
+    const dialog = document.getElementById("termsDialog");
+    dialog.classList.add("hiding");
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      dialog.classList.remove("show", "hiding");
+    }, 300);
+  }
+
+  function acceptTerms() {
+    hideTermsDialog();
+    const dialog = document.getElementById("confirmDialog");
+    dialog.classList.add("show");
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      document.getElementById("uploadForm").submit();
+    }, 5000);
+  }
+
+  // Update dialog buttons
+  document.querySelector(
+    ".dialog-buttons .dialog-button:not(.secondary)"
+  ).onclick = function (e) {
+    e.preventDefault();
+    showTermsDialog();
+  };
+</script>
 {% endblock %}

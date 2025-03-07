@@ -1,198 +1,389 @@
 <!DOCTYPE html>
 <html lang="sr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Fact Checking</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="./favicon.svg" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">
-                <img src="logo_etf.svg" alt="Logo">
-                <span class="navbar-title">AI Fact Checking</span>
-            </a>
-            <div class="navbar-links">
-                <a href="index.html" class="active">Početna</a>
-                <a href="fact_check.html">FactCheck</a>
-                <a href="consistency_checker.html">Consistency</a>
-                <a href="about.html">O projektu</a>
-                <a href="#contact">Kontakt</a>
-            </div>
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <img src="logo_etf.svg" alt="Logo" />
+          <span class="navbar-title">AI Fact Checking</span>
+        </a>
+        <div class="navbar-links">
+          <a href="index.html" class="active">Početna</a>
+          <a href="fact_check.html">FactCheck</a>
+          <a href="consistency_checker.html">Consistency</a>
+          <a href="about.html">O projektu</a>
+          <a href="#contact">Kontakt</a>
         </div>
+      </div>
     </nav>
 
     <!-- Mobilni navbar -->
     <nav class="mobile-navbar">
-        <div class="mobile-nav-items">
-            <a href="index.html" class="mobile-nav-item active">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 3L4 9v12h16V9l-8-6z"/>
-                </svg>
-                Home
-            </a>
-            <a href="fact_check.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                FactCheck
-            </a>
-            <a href="consistency_checker.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-                Consistency
-            </a>
-            <a href="about.html" class="mobile-nav-item">
-                <svg class="mobile-nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                O projektu
-            </a>
-        </div>
+      <div class="mobile-nav-items">
+        <a href="index.html" class="mobile-nav-item active">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 3L4 9v12h16V9l-8-6z" />
+          </svg>
+          Home
+        </a>
+        <a href="fact_check.html" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+            />
+          </svg>
+          FactCheck
+        </a>
+        <a href="consistency_checker.html" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg>
+          Consistency
+        </a>
+        <a href="about.html" class="mobile-nav-item">
+          <svg
+            class="mobile-nav-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+          O projektu
+        </a>
+      </div>
     </nav>
 
     <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Host on the Cloud to Keep Growing</h1>
-            <p class="hero-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, voluptatem.</p>
-            <div class="hero-buttons">
-                <button class="primary-button">Proverite činjenice</button>
-                <button class="primary-button">Analizirajte doslednost</button>
-            </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Host on the Cloud to Keep Growing</h1>
+        <p class="hero-description">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed,
+          voluptatem.
+        </p>
+        <div class="hero-buttons">
+          <a href="fact_check.html" class="primary-button">Provera tačnosti</a>
+          <a href="consistency_checker.html" class="join-button">Doslednost</a>
         </div>
+      </div>
     </section>
 
     <section class="features-section">
-        <div class="features-container">
-            <div class="feature-content">
-                <div class="feature-header">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Provera tačnosti izjava političara</h3>
-                </div>
-                <p class="feature-description">Naša platforma koristi naprednu AI tehnologiju za analizu političkih izjava, kako bi proverila tačnost tvrdnji koje iznose političari. Kroz upotrebu verifikacije podataka i pouzdanih izvora, naš alat pomaže da se razjasni da li su izjave političara tačne ili iskrivljene.</p>
-                <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
+      <h2 class="features-section-title">Naši AI alati</h2>
+
+      <div class="features-container">
+        <div class="feature-content">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
             </div>
-            <div class="feature-image">
-                <img src="placeholder1.jpg" alt="Feature 1">
-            </div>
+            <h3 class="feature-title">Provera tačnosti izjava političara</h3>
+          </div>
+          <p class="feature-description">
+            Naša platforma koristi najmoderniju AI tehnologiju kako bi detaljno
+            analizirala i proverila tačnost izjava koje političari daju u
+            javnosti. Putem sistematske verifikacije podataka i upoređivanja sa
+            pouzdanim, dokazivim izvorima, naš alat pruža jasnu sliku o tome da
+            li su određene tvrdnje tačne, delimično tačne, netačne ili namerno
+            iskrivljene. Cilj nam je da omogućimo transparentnost i objektivnu
+            procenu, pomažući korisnicima da lakše razumeju kontekst i
+            pouzdanost informacija koje političari šire. Naša tehnologija ne
+            samo da otkriva eventualne netačnosti, već pruža i objašnjenja koja
+            doprinose boljem razumevanju političkih poruka i njihovog uticaja na
+            društvo.
+          </p>
+          <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
+        <div class="feature-image">
+          <img
+            src="images/politican_speking.png"
+            class="transparent"
+            alt="Feature 1"
+          />
+        </div>
+      </div>
     </section>
 
     <section class="features-section reverse">
-        <div class="features-container">
-            <div class="feature-image">
-                <img src="placeholder2.jpg" alt="Feature 2">
-            </div>
-            <div class="feature-content">
-                <div class="feature-header">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Doslednost političkih stavova: Aleksandar Vučić</h3>
-                </div>
-                <p class="feature-description">Pratimo političku doslednost Aleksandra Vučića kroz analizu njegovih javnih izjava tokom vremena. Naš alat beleži promene ili kontinuitet u njegovim stavovima, omogućavajući transparentnu i objektivnu evaluaciju njegovih političkih pozicija.</p>
-                <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
-            </div>
+      <div class="features-container">
+        <div class="feature-image">
+          <img src="images/AV.svg" class="transparent" alt="Feature 2" />
         </div>
+        <div class="feature-content">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">
+              Doslednost političkih stavova: Aleksandar Vučić
+            </h3>
+          </div>
+          <p class="feature-description">
+            Pratimo političku doslednost Aleksandra Vučića kroz detaljnu analizu
+            njegovih javnih izjava i stavova tokom različitih perioda. Naš alat
+            sistematski beleži i upoređuje njegove tvrdnje kako bi identifikovao
+            promene ili kontinuitet u njegovim političkim pozicijama. Cilj nam
+            je da pružimo transparentnu i objektivnu evaluaciju, omogućavajući
+            javnosti da bolje razume konzistentnost ili eventualne promene u
+            njegovim stavovima tokom vremena. Kroz ovu analizu, korisnici mogu
+            dobiti jasniju sliku o razvoju i doslednosti njegovih političkih
+            stavova, što doprinosi informisanijoj raspravi o njegovom radu i
+            odlukama.
+          </p>
+          <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
+        </div>
+      </div>
     </section>
 
     <section class="features-section">
-        <div class="features-container">
-            <div class="feature-content">
-                <div class="feature-header">
-                    <div class="feature-icon">
-                        <svg  width="32" height="32" style="enable-background:new 0 0 436.8 442;" version="1.1" viewBox="0 0 436.8 442" fill="#FD0103" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M332.9,200.7l39.1-85c7-12.7,15.8-20.1,26-22.1c9.9-1.9,17.4,2,20.7,4.2c26.7,13.6,18.3,51,8.8,71.3   c-16.8,38.8-26.1,71.5-34.2,100.3c-12.1,42.9-22.6,80-52.6,120.9c-24,32.8-61.7,51.7-102,51.7c-2.9,0-5.9-0.1-8.8-0.3   c-41.5-2.8-77.7-25.5-96.7-60.6c-26.4-48.9-92.9-100.5-120.3-120.5C4.8,254.5-0.1,244.8,0,234.5c0.1-10.2,5.2-19.7,13.5-25.4   c11.6-8,28.3-10.1,49.5-6.1c15.2,2.9,29.7,9,43.4,18.4c13.7,9.4,21.8,12.2,25.9,13.1c0.3-21.2-26.6-91.2-37.1-118.7   c-3.8-9.8-7-18.3-9.5-25.2c-5.2-14.3,2.5-31.7,12.8-40.4c8.3-6.9,19.2-9.5,29.7-7c10.6,2.5,19.1,9.7,23.4,19.6l0.3,0.7l37.8,102.1   l-9.4-127.7c-0.6-17.5,14.9-35.4,32.4-37.6l0.9-0.1l7.1,0.1c9.8-0.9,20.1,2.4,27.9,9c7.4,6.2,11.6,14.6,12,23.6l6.1,122.4   l10.7-91.5c3.1-16,17.2-27.6,33.5-27.6h5.1c10.1,0,19.7,4.5,26.2,12.3c6.5,7.7,9.1,17.8,7.4,27.7L332.9,200.7z M43.4,226.9   c-6.6,0-11.8,1.2-15.1,3.5c-2,1.4-2.3,3.4-2.3,4.4c0,0.9,0.2,3.2,2.4,4.9c35.8,26.1,99.9,77.5,127.8,129.1   c14.8,27.3,43,44.9,75.7,47.1c34.7,2.4,67.6-12.9,88.1-40.9c27.2-37.1,36.6-70.4,48.5-112.6c8.4-29.6,17.9-63.2,35.4-103.7l0.1-0.3   c5-10.8,11.1-33.7,2.6-37.6l-2.1-1l-0.5-0.5c-0.3-0.1-0.8-0.3-1.3-0.2c-1.6,0.4-4.6,2.9-7.9,8.8l-43.3,94.2l-0.7,1   c-7,9.8-19.9,4.7-26,2.3c-11.6-4.6-22.1-10.3-20.6-21.3l19.9-132.5c0.6-3.3-0.9-5.6-1.8-6.7c-0.9-1.1-3-2.9-6.3-2.9H311   c-3.8,0-7.1,2.6-8,6.3l-15.7,122.2c-2.8,14.5-23.4,13.7-27.5,13.4c-15.5-1.2-16.7-12.2-16.8-14.3l-8.3-155.5   c-0.1-2.4-1.8-4.1-2.9-5c-2.5-2.1-6-3.3-8.9-2.9l-0.9,0.1l-6.7-0.1c-4.2,1-9.1,6.7-9.1,10.7l11.1,152.1c0.1,6.1-3.1,14-19.3,17.2   c-16.1,3.2-22-2.9-24.2-8.6L127.8,72.8c-1.4-3.1-4.1-4.1-5.5-4.4c-1.5-0.4-4.4-0.6-7.1,1.7c-3.6,3-5.8,9.5-5.1,11.6   c2.4,6.6,5.6,15,9.3,24.7c35.1,91.5,47.3,132.5,32.1,148.2c-15,15.9-46.8-3-59.8-11.9c-10.6-7.3-21.9-12.1-33.5-14.3   C52.7,227.4,47.7,226.9,43.4,226.9z"/></g></svg>
-                    </div>
-                    <h3 class="feature-title">Blokade i političke strategije</h3>
-                </div>
-                <p class="feature-description">Političke blokade mogu imati značajan uticaj na stabilnost i donošenje odluka. Ovaj alat analizira kako političke blokade utiču na društvo i ekonomiju, pružajući uvid u strategije političara i njihov odgovor na trenutne izazove.</p>
-                <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
+      <div class="features-container">
+        <div class="feature-content">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg
+                width="32"
+                height="32"
+                style="enable-background: new 0 0 436.8 442"
+                version="1.1"
+                viewBox="0 0 436.8 442"
+                fill="#FD0103"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M332.9,200.7l39.1-85c7-12.7,15.8-20.1,26-22.1c9.9-1.9,17.4,2,20.7,4.2c26.7,13.6,18.3,51,8.8,71.3   c-16.8,38.8-26.1,71.5-34.2,100.3c-12.1,42.9-22.6,80-52.6,120.9c-24,32.8-61.7,51.7-102,51.7c-2.9,0-5.9-0.1-8.8-0.3   c-41.5-2.8-77.7-25.5-96.7-60.6c-26.4-48.9-92.9-100.5-120.3-120.5C4.8,254.5-0.1,244.8,0,234.5c0.1-10.2,5.2-19.7,13.5-25.4   c11.6-8,28.3-10.1,49.5-6.1c15.2,2.9,29.7,9,43.4,18.4c13.7,9.4,21.8,12.2,25.9,13.1c0.3-21.2-26.6-91.2-37.1-118.7   c-3.8-9.8-7-18.3-9.5-25.2c-5.2-14.3,2.5-31.7,12.8-40.4c8.3-6.9,19.2-9.5,29.7-7c10.6,2.5,19.1,9.7,23.4,19.6l0.3,0.7l37.8,102.1   l-9.4-127.7c-0.6-17.5,14.9-35.4,32.4-37.6l0.9-0.1l7.1,0.1c9.8-0.9,20.1,2.4,27.9,9c7.4,6.2,11.6,14.6,12,23.6l6.1,122.4   l10.7-91.5c3.1-16,17.2-27.6,33.5-27.6h5.1c10.1,0,19.7,4.5,26.2,12.3c6.5,7.7,9.1,17.8,7.4,27.7L332.9,200.7z M43.4,226.9   c-6.6,0-11.8,1.2-15.1,3.5c-2,1.4-2.3,3.4-2.3,4.4c0,0.9,0.2,3.2,2.4,4.9c35.8,26.1,99.9,77.5,127.8,129.1   c14.8,27.3,43,44.9,75.7,47.1c34.7,2.4,67.6-12.9,88.1-40.9c27.2-37.1,36.6-70.4,48.5-112.6c8.4-29.6,17.9-63.2,35.4-103.7l0.1-0.3   c5-10.8,11.1-33.7,2.6-37.6l-2.1-1l-0.5-0.5c-0.3-0.1-0.8-0.3-1.3-0.2c-1.6,0.4-4.6,2.9-7.9,8.8l-43.3,94.2l-0.7,1   c-7,9.8-19.9,4.7-26,2.3c-11.6-4.6-22.1-10.3-20.6-21.3l19.9-132.5c0.6-3.3-0.9-5.6-1.8-6.7c-0.9-1.1-3-2.9-6.3-2.9H311   c-3.8,0-7.1,2.6-8,6.3l-15.7,122.2c-2.8,14.5-23.4,13.7-27.5,13.4c-15.5-1.2-16.7-12.2-16.8-14.3l-8.3-155.5   c-0.1-2.4-1.8-4.1-2.9-5c-2.5-2.1-6-3.3-8.9-2.9l-0.9,0.1l-6.7-0.1c-4.2,1-9.1,6.7-9.1,10.7l11.1,152.1c0.1,6.1-3.1,14-19.3,17.2   c-16.1,3.2-22-2.9-24.2-8.6L127.8,72.8c-1.4-3.1-4.1-4.1-5.5-4.4c-1.5-0.4-4.4-0.6-7.1,1.7c-3.6,3-5.8,9.5-5.1,11.6   c2.4,6.6,5.6,15,9.3,24.7c35.1,91.5,47.3,132.5,32.1,148.2c-15,15.9-46.8-3-59.8-11.9c-10.6-7.3-21.9-12.1-33.5-14.3   C52.7,227.4,47.7,226.9,43.4,226.9z"
+                  />
+                </g>
+              </svg>
             </div>
-            <div class="feature-image">
-                <img src="placeholder3.jpg" alt="Feature 3">
-            </div>
+            <h3 class="feature-title">Blokade studenata</h3>
+          </div>
+          <p class="feature-description">
+            Kao studenti i deo akademske zajednice, ovaj projekat posvećujemo
+            podršci studentskim blokadama u Srbiji, koje su počele kao odgovor
+            na dugogodišnje zanemarivanje problema u visokom obrazovanju.
+            Blokade su započele zbog nezadovoljstva uslovima na univerzitetima,
+            uključujući nedostatak finansijskih sredstava, lošu infrastrukturu,
+            neadekvatnu transparentnost u upravljanju i ograničenu mogućnost
+            studenata da učestvuju u odlučivanju o pitanjima koja ih direktno
+            tiču. Kroz ovu inicijativu, želimo da istaknemo važnost ovih
+            protesta, pratimo njihov tok, analiziramo postignute rezultate i
+            podržimo nastojanja studenata da ostvare opravdane zahteve za bolje
+            i pravednije obrazovne uslove. Naš cilj je da doprinesemo jačanju
+            studentskog glasa i promovisanju pozitivnih promena u sistemu
+            visokog obrazovanja.
+          </p>
+          <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
         </div>
+        <div class="feature-image">
+          <img src="images/protest.svg" class="transparent" alt="Feature 3" />
+        </div>
+      </div>
     </section>
 
     <section class="features-section reverse">
-        <div class="features-container">
-            <div class="feature-image">
-                <img src="placeholder4.jpg" alt="Feature 4">
-            </div>
-            <div class="feature-content">
-                <div class="feature-header">
-                    <div class="feature-icon">
-                        <svg   width="40" height="40" data-name="Layer 1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M332.56,155.12H179.44a24.35,24.35,0,0,0-24.32,24.31V332.56a24.34,24.34,0,0,0,24.32,24.31H332.56a24.34,24.34,0,0,0,24.32-24.31V179.43A24.35,24.35,0,0,0,332.56,155.12ZM343.5,332.56a11,11,0,0,1-10.94,10.94H179.44a11,11,0,0,1-10.94-10.94V179.43a11,11,0,0,1,10.94-10.94H332.56a11,11,0,0,1,10.94,10.94Z"/><path d="M260.13,277.31a4,4,0,0,0,.66-.64,6,6,0,0,0,1.55-4,6.89,6.89,0,0,0-1.25-3.93,6.38,6.38,0,0,0-3.77-2.59l-.27-.06-7-21.44q-2.4-7.14-4.26-13-2-6-3.8-10.31a32,32,0,0,0-4.05-7.12c-2.3-2.88-4.74-3.49-6.39-3.49-2.32,0-4.45,1.19-6.35,3.53a34.29,34.29,0,0,0-4.16,7.19q-1.95,4.31-4,10.19t-4.21,12.65l-15.92,49.37a7.69,7.69,0,0,0-.16,1.52,5.67,5.67,0,0,0,2.16,4.59,6.52,6.52,0,0,0,4,1.34c1.78,0,4.37-.66,6.6-3.8a3.09,3.09,0,0,0,.48-1l5.44-17.74h31.37L251.48,297a6.49,6.49,0,0,0,6.11,3.82c4,0,6.67-2.39,7-6.22a3.12,3.12,0,0,0-.11-1.18Zm-26.24-37q1.62,4.66,3.31,9.7l3.33,10.09c.57,1.73,1.1,3.41,1.61,5H220l11.1-32.85C231.94,234.71,232.85,237.39,233.89,240.33Z"/><path d="M298.9,271.5q.25-6.78.49-14.35l.8-27.13q.07-3.09.12-5.37l1.62.06c2.41.09,4.52.21,6.31.34,3.64.18,6.49-1.93,7-6.25a6.75,6.75,0,0,0-5.66-6.76c-1-.14-2.5-.3-4.58-.47-.79-.07-3.19-.27-22.77.23-6.91-.18-13.5.3-14.68,5-1,4.14.4,6.19,1.79,7.17a7.15,7.15,0,0,0,5.12,1.24,30.16,30.16,0,0,1,3.42-.22l6.73-.1,2.41,0c0,.6,0,1.25,0,2q0,3.45-.2,8l-1,28.19c-.34,8.43-.56,14.65-.69,18.62-.08,2.32-.15,4.35-.23,6.08q-8.89-.15-11.46-.15a7.73,7.73,0,0,0-3.79,1c-1.25.69-2.74,2.2-2.74,5.32-.08,1.75.52,4.94,5.36,6.6a3.53,3.53,0,0,0,1,.18l35.07.6a6.2,6.2,0,0,0,6.52-5.94,6.45,6.45,0,0,0-1.44-4.93,7.4,7.4,0,0,0-5.52-2.29l-9.8-.14q.18-1.92.3-4.41C298.57,280.05,298.74,276,298.9,271.5Z"/><path d="M430.25,234.08a6.69,6.69,0,0,0,0-13.38H390.08V176.87h40.17a6.69,6.69,0,1,0,0-13.38H389.52a46.84,46.84,0,0,0-41-41V81.76a6.69,6.69,0,1,0-13.38,0v40.15H291.29V81.76a6.69,6.69,0,1,0-13.37,0v40.15H234.08V81.76a6.69,6.69,0,1,0-13.37,0v40.15H176.87V81.76a6.69,6.69,0,1,0-13.38,0v40.71a46.84,46.84,0,0,0-41,41H81.75a6.69,6.69,0,0,0,0,13.38h40.17V220.7H81.75a6.69,6.69,0,1,0,0,13.38h40.17v43.83H81.75a6.69,6.69,0,0,0,0,13.38h40.17v43.84H81.75a6.69,6.69,0,1,0,0,13.37h40.73a46.83,46.83,0,0,0,41,41v40.72a6.69,6.69,0,1,0,13.38,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.37,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.37,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.38,0V389.52a46.83,46.83,0,0,0,41-41h40.73a6.69,6.69,0,1,0,0-13.37H390.08V291.29h40.17a6.69,6.69,0,0,0,0-13.38H390.08V234.08ZM376.71,343A33.75,33.75,0,0,1,343,376.7H169A33.75,33.75,0,0,1,135.29,343V169A33.76,33.76,0,0,1,169,135.29H343A33.76,33.76,0,0,1,376.71,169Z"/></svg>
-                    </div>
-                    <h3 class="feature-title">AI u analizi političkih izjava</h3>
-                </div>
-                <p class="feature-description">Korišćenjem veštačke inteligencije, naš alat analizira političke izjave kako bi pružio dublje razumevanje njihovih tačnosti, doslednosti i strategije. AI omogućava bržu i precizniju obradu podataka, što omogućava korisnicima da bolje razumeju politički diskurs.</p>
-                <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
-            </div>
+      <div class="features-container">
+        <div class="feature-image">
+          <img src="images/api.svg" class="transparent" alt="Feature 4" />
         </div>
+        <div class="feature-content">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg
+                width="40"
+                height="40"
+                data-name="Layer 1"
+                id="Layer_1"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M332.56,155.12H179.44a24.35,24.35,0,0,0-24.32,24.31V332.56a24.34,24.34,0,0,0,24.32,24.31H332.56a24.34,24.34,0,0,0,24.32-24.31V179.43A24.35,24.35,0,0,0,332.56,155.12ZM343.5,332.56a11,11,0,0,1-10.94,10.94H179.44a11,11,0,0,1-10.94-10.94V179.43a11,11,0,0,1,10.94-10.94H332.56a11,11,0,0,1,10.94,10.94Z"
+                />
+                <path
+                  d="M260.13,277.31a4,4,0,0,0,.66-.64,6,6,0,0,0,1.55-4,6.89,6.89,0,0,0-1.25-3.93,6.38,6.38,0,0,0-3.77-2.59l-.27-.06-7-21.44q-2.4-7.14-4.26-13-2-6-3.8-10.31a32,32,0,0,0-4.05-7.12c-2.3-2.88-4.74-3.49-6.39-3.49-2.32,0-4.45,1.19-6.35,3.53a34.29,34.29,0,0,0-4.16,7.19q-1.95,4.31-4,10.19t-4.21,12.65l-15.92,49.37a7.69,7.69,0,0,0-.16,1.52,5.67,5.67,0,0,0,2.16,4.59,6.52,6.52,0,0,0,4,1.34c1.78,0,4.37-.66,6.6-3.8a3.09,3.09,0,0,0,.48-1l5.44-17.74h31.37L251.48,297a6.49,6.49,0,0,0,6.11,3.82c4,0,6.67-2.39,7-6.22a3.12,3.12,0,0,0-.11-1.18Zm-26.24-37q1.62,4.66,3.31,9.7l3.33,10.09c.57,1.73,1.1,3.41,1.61,5H220l11.1-32.85C231.94,234.71,232.85,237.39,233.89,240.33Z"
+                />
+                <path
+                  d="M298.9,271.5q.25-6.78.49-14.35l.8-27.13q.07-3.09.12-5.37l1.62.06c2.41.09,4.52.21,6.31.34,3.64.18,6.49-1.93,7-6.25a6.75,6.75,0,0,0-5.66-6.76c-1-.14-2.5-.3-4.58-.47-.79-.07-3.19-.27-22.77.23-6.91-.18-13.5.3-14.68,5-1,4.14.4,6.19,1.79,7.17a7.15,7.15,0,0,0,5.12,1.24,30.16,30.16,0,0,1,3.42-.22l6.73-.1,2.41,0c0,.6,0,1.25,0,2q0,3.45-.2,8l-1,28.19c-.34,8.43-.56,14.65-.69,18.62-.08,2.32-.15,4.35-.23,6.08q-8.89-.15-11.46-.15a7.73,7.73,0,0,0-3.79,1c-1.25.69-2.74,2.2-2.74,5.32-.08,1.75.52,4.94,5.36,6.6a3.53,3.53,0,0,0,1,.18l35.07.6a6.2,6.2,0,0,0,6.52-5.94,6.45,6.45,0,0,0-1.44-4.93,7.4,7.4,0,0,0-5.52-2.29l-9.8-.14q.18-1.92.3-4.41C298.57,280.05,298.74,276,298.9,271.5Z"
+                />
+                <path
+                  d="M430.25,234.08a6.69,6.69,0,0,0,0-13.38H390.08V176.87h40.17a6.69,6.69,0,1,0,0-13.38H389.52a46.84,46.84,0,0,0-41-41V81.76a6.69,6.69,0,1,0-13.38,0v40.15H291.29V81.76a6.69,6.69,0,1,0-13.37,0v40.15H234.08V81.76a6.69,6.69,0,1,0-13.37,0v40.15H176.87V81.76a6.69,6.69,0,1,0-13.38,0v40.71a46.84,46.84,0,0,0-41,41H81.75a6.69,6.69,0,0,0,0,13.38h40.17V220.7H81.75a6.69,6.69,0,1,0,0,13.38h40.17v43.83H81.75a6.69,6.69,0,0,0,0,13.38h40.17v43.84H81.75a6.69,6.69,0,1,0,0,13.37h40.73a46.83,46.83,0,0,0,41,41v40.72a6.69,6.69,0,1,0,13.38,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.37,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.37,0V390.08h43.84v40.16a6.69,6.69,0,1,0,13.38,0V389.52a46.83,46.83,0,0,0,41-41h40.73a6.69,6.69,0,1,0,0-13.37H390.08V291.29h40.17a6.69,6.69,0,0,0,0-13.38H390.08V234.08ZM376.71,343A33.75,33.75,0,0,1,343,376.7H169A33.75,33.75,0,0,1,135.29,343V169A33.76,33.76,0,0,1,169,135.29H343A33.76,33.76,0,0,1,376.71,169Z"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">AI u analizi političkih izjava</h3>
+          </div>
+          <p class="feature-description">
+            Korišćenjem veštačke inteligencije, naš alat analizira političke
+            izjave kako bi pružio dublje razumevanje njihovih tačnosti,
+            doslednosti i strategije. AI omogućava bržu i precizniju obradu
+            podataka, što omogućava korisnicima da bolje razumeju politički
+            diskurs.
+          </p>
+          <!--<a href="#" class="feature-link">LEARN MORE →</a>-->
+        </div>
+      </div>
     </section>
 
+    <h2 class="features-section-title">Nasi Sponzori</h2>
+
+    <div class="team-members sponsors">
+      <div class="team-member">
+        <div class="member-image" id="etf-latinica-logo">
+          <img src="images/ETF_latinica.svg" alt="Team Member" />
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img src="images/logo_palata.svg" alt="Team Member" />
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img src="images/data_inovaton_hub.svg" alt="Team Member" />
+        </div>
+      </div>
+    </div>
 
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Navigacija</h3>
-                <ul class="footer-links">
-                    <li><a href="/">Početna</a></li>
-                    <li><a href="/about">O nama</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Resursi</h3>
-                <ul class="footer-links">
-                    <li><a href="/docs">Dokumentacija</a></li>
-                    <li><a href="/api">API</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/support">Podrška</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Pratite nas</h3>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.212 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                        </svg>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Navigacija</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Početna</a></li>
+            <li><a href="fact_check.html">Fact Checker</a></li>
+            <li><a href="consistency_checker.html">Consistency Checker</a></li>
+            <li><a href="about.html">O projektu</a></li>
+          </ul>
         </div>
-        <div class="footer-bottom">
-            <div>&copy; 2024 Fact Checking AI. Sva prava zadržana.</div>
+        <div class="footer-column">
+          <h3>Sponzori</h3>
+          <ul class="footer-links">
+            <div class="social-links">
+              <a href="https://github.com" target="_blank" class="social-icon">
+                <svg
+                  class="palata-nauke-logo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 84 72"
+                  fill="currentColor"
+                  width="48"
+                  height="48"
+                >
+                  <path
+                    d="M46.7278 27.5141C46.5901 25.0217 45.9316 22.5981 44.8111 20.3903L52.2222 16.1317C54.0701 19.6053 55.1513 23.491 55.2988 27.5141H46.7179H46.7278ZM33.4486 31.2624C32.967 32.0965 32.2691 32.803 31.4238 33.2838C29.7823 34.2356 27.6199 34.2454 25.9489 33.3034C25.9293 33.2936 25.9195 33.2838 25.8998 33.274C25.3789 32.9796 24.9071 32.5969 24.5139 32.1456C24.278 31.8806 24.0617 31.5764 23.875 31.2624C23.8455 31.2134 23.816 31.1545 23.7865 31.1054C23.531 30.6344 23.3442 30.1144 23.2361 29.5943C23.1673 29.2411 23.128 28.878 23.128 28.515C23.128 27.5435 23.3835 26.5917 23.8652 25.7675C23.8947 25.7184 23.934 25.6595 23.9635 25.6105C24.3173 25.0512 24.7694 24.5507 25.2904 24.1484C25.487 24.0012 25.6836 23.8737 25.89 23.7559C27.5511 22.7943 29.7332 22.7943 31.3943 23.7461C31.3943 23.7461 31.4041 23.7461 31.4139 23.7559C31.6302 23.8737 31.8268 24.011 32.0135 24.1582C32.5934 24.5998 33.0751 25.1493 33.4388 25.7675C33.9204 26.6015 34.1759 27.5435 34.1759 28.515C34.1759 29.4864 33.9204 30.4382 33.4388 31.2624H33.4486ZM16.2083 51.9667L20.4938 44.5779C22.7152 45.6965 25.1626 46.3442 27.6592 46.4815V55.0086C23.6489 54.8614 19.7271 53.8114 16.2083 51.9569V51.9667ZM6.09407 42.6253L13.5151 38.3568C14.8813 40.4273 16.6702 42.2131 18.7638 43.5771L14.4783 50.956C11.0971 48.8365 8.22699 45.9811 6.09407 42.6154V42.6253ZM2.0248 29.506H10.5958C10.7334 31.9984 11.3821 34.4221 12.5125 36.6298L5.0915 40.8983C3.22396 37.3952 2.17224 33.4997 2.0248 29.506ZM14.4685 6.06409L18.754 13.4529C16.6702 14.8168 14.8813 16.5928 13.5052 18.6633L6.09407 14.4047C8.19751 11.0782 11.0381 8.2032 14.4685 6.06409ZM40.1717 27.5141C40.0538 26.1796 39.6999 24.8647 39.1298 23.648L43.0615 21.3911C44.0149 23.2947 44.5752 25.3848 44.7128 27.5239H40.1717V27.5141ZM23.757 38.9358C24.9759 39.5049 26.293 39.8581 27.6494 39.9759V44.4896C25.4968 44.3621 23.4032 43.7929 21.4865 42.8509L23.757 38.9358ZM19.1767 35.1089C19.9532 36.2177 20.9164 37.1695 22.0271 37.9447L19.7566 41.8599C17.9677 40.6824 16.4343 39.1516 15.245 37.3756L19.1767 35.1187V35.1089ZM17.1322 29.5158C17.2501 30.8601 17.604 32.175 18.1741 33.3819L14.2424 35.6388C13.289 33.7352 12.7287 31.6451 12.5911 29.506H17.1322V29.5158ZM22.0271 19.095C20.9262 19.8702 19.963 20.822 19.1767 21.9308L15.245 19.6739C16.4343 17.8979 17.9677 16.3672 19.7566 15.1897L22.0271 19.1048V19.095ZM27.6494 10.5484C25.1528 10.6858 22.7053 11.3334 20.4839 12.452L16.1984 5.07303C19.7173 3.21848 23.6391 2.16855 27.6494 2.02136V10.5484ZM36.82 12.452C34.5986 11.3334 32.1511 10.6858 29.6545 10.5484V2.02136C33.6648 2.16855 37.5867 3.21848 41.1055 5.07303L36.82 12.452ZM38.1273 21.921C37.3507 20.822 36.3875 19.8604 35.2768 19.0852L37.5473 15.17C39.3362 16.3573 40.8696 17.8881 42.0589 19.6543L38.1273 21.9112V21.921ZM36.1123 27.5141V27.4945C36.0828 27.2884 36.0435 27.0823 35.9943 26.8861C35.9845 26.8272 35.9648 26.7782 35.955 26.7193C35.9059 26.5132 35.8469 26.3072 35.7781 26.1011C35.7781 26.0913 35.7781 26.0815 35.7683 26.0717C35.7191 25.9343 35.67 25.7969 35.611 25.6595L37.3901 24.639C37.8029 25.5516 38.0584 26.5132 38.1666 27.5141H36.1221H36.1123ZM25.7818 35.4425C25.9195 35.5014 26.0669 35.5505 26.2045 35.5995C26.4109 35.6682 26.6173 35.7271 26.8336 35.786C26.8827 35.7958 26.9417 35.8056 26.9908 35.8252C27.1972 35.8743 27.3938 35.9037 27.6002 35.9332C27.6101 35.9332 27.6199 35.9332 27.6297 35.9332V37.9643C26.6272 37.8564 25.6541 37.6013 24.74 37.199L25.7622 35.4327L25.7818 35.4425ZM22.6857 33.0876C23.0788 33.5978 23.5408 34.059 24.0519 34.4417L23.0297 36.1981C22.2237 35.6094 21.5062 34.9029 20.9164 34.0982L22.6857 33.0777V33.0876ZM21.1818 29.506C21.2703 30.1438 21.4374 30.7718 21.6831 31.3606L19.9138 32.3811C19.5109 31.4685 19.2455 30.5069 19.1373 29.506H21.1818ZM21.6831 25.6595C21.4374 26.2581 21.2703 26.8763 21.1818 27.5141H19.1373C19.2455 26.523 19.501 25.5516 19.904 24.6489L21.6733 25.6694L21.6831 25.6595ZM24.0519 22.5784C23.5408 22.9709 23.0788 23.4223 22.6857 23.9325L20.9164 22.9121C21.5062 22.1074 22.2237 21.4009 23.0297 20.8122L24.0519 22.5686V22.5784ZM27.6494 17.054C26.3028 17.1718 24.9759 17.525 23.757 18.0843L21.4865 14.1692C23.4032 13.2174 25.5066 12.6679 27.6494 12.5305V17.0442V17.054ZM33.5469 18.0843C32.3182 17.5152 31.0011 17.1718 29.6545 17.054V12.5403C31.7973 12.6777 33.9007 13.2272 35.8174 14.179L33.5469 18.0941V18.0843ZM34.6182 23.9325C34.3725 23.6186 34.0973 23.3242 33.8024 23.0494C33.6255 22.8826 33.4486 22.7256 33.2618 22.5784L34.2841 20.822C35.09 21.4108 35.8076 22.1172 36.3973 22.9219L34.6281 23.9424L34.6182 23.9325ZM27.6494 21.0968C27.4921 21.1164 27.3349 21.1458 27.1776 21.1753C26.696 21.2636 26.234 21.4009 25.7818 21.5874L24.7596 19.8211C25.6737 19.4188 26.6468 19.1539 27.6396 19.0558V21.0968H27.6494ZM31.5122 21.5776C30.9127 21.3421 30.2836 21.1753 29.6545 21.0968V19.046C30.6473 19.1539 31.6302 19.409 32.5443 19.8113L31.5221 21.5776H31.5122ZM14.2326 21.3813L18.1643 23.6382C17.5942 24.8549 17.2403 26.1698 17.1224 27.5043H12.5813C12.7091 25.3652 13.2792 23.2849 14.2326 21.3813ZM2.00515 27.5043C2.16241 23.4812 3.23379 19.5954 5.08167 16.1218L12.4928 20.3804C11.3723 22.5882 10.7138 25.0217 10.5762 27.5043H2.0248H2.00515ZM51.2 14.3949L43.7888 18.6535C42.4226 16.5732 40.6337 14.7972 38.5499 13.443L42.8354 6.05428C46.2658 8.2032 49.1064 11.0684 51.2 14.4047V14.3949ZM57.3039 28.4953C57.3039 18.3493 51.8193 8.89007 42.973 3.80723C38.658 1.32468 33.7041 0 28.6618 0C23.6194 0 18.6655 1.32468 14.3309 3.81704C5.48466 8.89989 0 18.3591 0 28.5051C0 33.5193 1.32693 38.455 3.83337 42.7626C6.3398 47.0899 9.96675 50.7009 14.3211 53.2031C18.6557 55.7052 23.6096 57.0201 28.652 57.0201H29.6545V35.9332C30.6276 35.8056 31.5712 35.4818 32.4165 35.001C33.5567 34.3435 34.5101 33.3917 35.1687 32.2535C35.6601 31.4096 35.9845 30.4774 36.1123 29.506H57.3137V28.515L57.3039 28.4953Z"
+                  ></path>
+                  <path
+                    d="M76.1164 55.4801C76.9126 55.4801 77.5417 55.1464 77.8955 54.6754L79.5468 55.6469C78.7998 56.7459 77.6105 57.3739 76.0869 57.3739C73.4232 57.3739 71.7326 55.5193 71.7326 53.1251C71.7326 50.7308 73.4331 48.8763 75.9297 48.8763C78.2788 48.8763 79.9498 50.7603 79.9498 53.1251C79.9498 53.4293 79.9203 53.704 79.8712 53.9787H73.8754C74.1604 55.0385 75.0352 55.4899 76.1164 55.4899M77.9053 52.3695C77.6498 51.2116 76.7946 50.7505 75.9297 50.7505C74.8288 50.7505 74.0818 51.3392 73.8459 52.3695H77.8955H77.9053ZM68.9706 57.1482L66.0809 53.4979V57.1482H64.0266V45.8835H66.0809V52.6443L68.8134 49.102H71.2608L68.0664 53.076L71.3591 57.1482H68.9706ZM61.8052 49.102V57.1482H59.7607V56.2454C59.2889 56.9715 58.4535 57.3739 57.3919 57.3739C55.7111 57.3739 54.394 56.1865 54.394 54.0474V49.1118H56.4385V53.7923C56.4385 54.8913 57.0872 55.4506 58.0111 55.4506C59.0137 55.4506 59.7607 54.8521 59.7607 53.4489V49.102H61.815H61.8052ZM52.3004 49.102V57.1482H50.2461V56.1964C49.676 56.9225 48.8111 57.3739 47.6512 57.3739C45.538 57.3739 43.7884 55.5193 43.7884 53.1251C43.7884 50.7308 45.538 48.8763 47.6512 48.8763C48.8111 48.8763 49.6662 49.3277 50.2461 50.0538V49.102H52.3004ZM50.2461 53.1251C50.2461 51.7709 49.3124 50.8584 48.0346 50.8584C46.7568 50.8584 45.8427 51.7709 45.8427 53.1251C45.8427 54.4792 46.7764 55.3917 48.0346 55.3917C49.2927 55.3917 50.2461 54.4792 50.2461 53.1251ZM42.1076 52.2027V57.1384H40.0533V52.4578C40.0533 51.3588 39.4046 50.7995 38.4806 50.7995C37.4781 50.7995 36.731 51.3981 36.731 52.8013V57.1482H34.6768V49.102H36.731V50.0047C37.2028 49.2786 38.0383 48.8763 39.0999 48.8763C40.7807 48.8763 42.1076 50.0636 42.1076 52.2027ZM83.9797 35.8748V43.764H81.9353V42.8318C81.3652 43.5383 80.5101 43.9799 79.3502 43.9799C77.2369 43.9799 75.4972 42.1646 75.4972 39.8096C75.4972 37.4546 77.2468 35.6393 79.3502 35.6393C80.5101 35.6393 81.3652 36.0809 81.9353 36.7873V35.8552H83.9797V35.8748ZM81.9353 39.8194C81.9353 38.4947 81.0015 37.592 79.7237 37.592C78.4459 37.592 77.5318 38.4947 77.5318 39.8194C77.5318 41.1441 78.4656 42.0468 79.7237 42.0468C80.9819 42.0468 81.9353 41.1539 81.9353 39.8194ZM72.5583 37.8275V41.1146C72.5583 41.9683 73.1775 41.9781 74.3472 41.9193V43.764C71.4771 44.078 70.504 43.2439 70.504 41.1146V37.8275H69.1279V35.865H70.504V34.2656L72.5484 33.6572V35.865H74.3374V37.8275H72.5484H72.5583ZM67.6142 35.865V43.7542H65.5698V42.822C64.9997 43.5285 64.1445 43.9701 62.9847 43.9701C60.8714 43.9701 59.1317 42.1548 59.1317 39.7998C59.1317 37.4448 60.8813 35.6295 62.9847 35.6295C64.1445 35.6295 64.9997 36.071 65.5698 36.7775V35.8454H67.6142V35.865ZM65.5698 39.8096C65.5698 38.4849 64.636 37.5822 63.3582 37.5822C62.0804 37.5822 61.1663 38.4849 61.1663 39.8096C61.1663 41.1343 62.1001 42.037 63.3582 42.037C64.6163 42.037 65.5698 41.1441 65.5698 39.8096ZM55.2688 32.2344H57.3133V43.7542H55.2688V32.2344ZM53.0671 35.865V43.7542H51.0226V42.822C50.4525 43.5285 49.5974 43.9701 48.4376 43.9701C46.3243 43.9701 44.5845 42.1548 44.5845 39.7998C44.5845 37.4448 46.3341 35.6295 48.4376 35.6295C49.5974 35.6295 50.4525 36.071 51.0226 36.7775V35.8454H53.0671V35.865ZM51.0226 39.8096C51.0226 38.4849 50.0889 37.5822 48.8209 37.5822C47.5529 37.5822 46.629 38.4849 46.629 39.8096C46.629 41.1343 47.5628 42.037 48.8209 42.037C50.079 42.037 51.0226 41.1441 51.0226 39.8096ZM43.1986 39.8096C43.1986 42.1646 41.449 43.9799 39.3259 43.9799C38.1661 43.9799 37.3208 43.5579 36.7605 42.8318V46.9236H34.7161V35.8748H36.7605V36.807C37.3306 36.0809 38.1759 35.6589 39.3259 35.6589C41.449 35.6589 43.1986 37.4742 43.1986 39.8292M41.1542 39.8292C41.1542 38.5045 40.2204 37.6018 38.9524 37.6018C37.6845 37.6018 36.7605 38.5045 36.7605 39.8292C36.7605 41.1539 37.6943 42.0566 38.9524 42.0566C40.2106 42.0566 41.1542 41.1637 41.1542 39.8292Z"
+                  ></path>
+                </svg>
+              </a>
+
+              <a href="https://twitter.com" target="_blank" class="social-icon">
+                <img src="images/etf_logo_navbar.svg" class="etf-logo" alt="" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="social-icon"
+              >
+                <img
+                  src="images/data_inovaton_hub_navbar.svg"
+                  class="data-logo"
+                  alt=""
+                />
+              </a>
+            </div>
+          </ul>
         </div>
+        <div class="footer-column">
+          <h3>Pratite nas</h3>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-icon">
+              <img class="github-logo" src="images/github_logo.svg" alt="" />
+            </a>
+
+            <a href="https://x.com" target="_blank" class="social-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="social-icon instagram"
+            >
+              <img src="images/instagram_white.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2024 Fact Checking AI. Sva prava zadržana.</div>
+      </div>
     </footer>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

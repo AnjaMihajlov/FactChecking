@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.6 232.77">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #e8e8e8;
+        stroke-miterlimit: 10;
+        stroke-width: 5.67px;
+      }
+
+      .cls-2 {
+        fill: #e8e8e8;
+        font-family: EffraVFWghtItal-SemiBold, 'Effra VF Trial';
+        font-size: 70.93px;
+        font-variation-settings: 'wght' 600, 'ital' 0;
+        font-weight: 600;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <polygon class="cls-1" points="197.29 144.42 179.77 154.38 142.92 133.07 142.92 114.75 121.81 102.2 121.81 58.98 142.72 46.83 142.72 25.32 179.77 3.82 197.29 14.57 197.29 144.42"/>
+    <polygon class="cls-1" points="197.29 144.42 214.82 154.38 251.66 133.07 251.66 114.75 272.78 102.2 272.78 58.98 251.86 46.83 251.86 25.32 214.82 3.82 197.29 14.57 197.29 144.42"/>
+  </g>
+  <g id="Layer_3" data-name="Layer 3">
+    <g>
+      <path class="cls-1" d="M142.72,46.83l11.43,6.98-11.43-6.98Z"/>
+      <circle class="cls-1" cx="154.16" cy="53.81" r="2.68"/>
+    </g>
+    <circle class="cls-1" cx="134.49" cy="81.64" r="2.68"/>
+    <g>
+      <path class="cls-1" d="M142.77,114.86l11.43-6.98-11.43,6.98Z"/>
+      <circle class="cls-1" cx="154.2" cy="107.89" r="2.68"/>
+    </g>
+    <circle class="cls-1" cx="183.9" cy="81.64" r="2.68"/>
+    <polyline class="cls-1" points="168.53 128.19 175.78 120.69 175.78 99.56 160.53 92.19 160.53 71.31 175.78 61.06 175.78 39.81 168.91 34.94"/>
+    <circle class="cls-1" cx="168.16" cy="128.19" r="2.68"/>
+    <circle class="cls-1" cx="168.78" cy="34.94" r="2.68"/>
+    <g>
+      <path class="cls-1" d="M251.86,46.71l-11.43,6.98,11.43-6.98Z"/>
+      <circle class="cls-1" cx="240.43" cy="53.69" r="2.68"/>
+    </g>
+    <circle class="cls-1" cx="260.1" cy="81.52" r="2.68"/>
+    <g>
+      <path class="cls-1" d="M251.82,114.74l-11.43-6.98,11.43,6.98Z"/>
+      <circle class="cls-1" cx="240.38" cy="107.76" r="2.68"/>
+    </g>
+    <circle class="cls-1" cx="210.69" cy="81.52" r="2.68"/>
+    <polyline class="cls-1" points="226.06 128.06 218.81 120.56 218.81 99.44 234.06 92.06 234.06 71.19 218.81 60.94 218.81 39.69 225.68 34.81"/>
+    <circle class="cls-1" cx="226.43" cy="128.06" r="2.68"/>
+    <circle class="cls-1" cx="225.81" cy="34.81" r="2.68"/>
+    <line class="cls-1" x1="183.9" y1="81.64" x2="210.69" y2="81.64"/>
+    <line class="cls-1" x1="134.49" y1="81.64" x2="121.81" y2="81.64"/>
+    <line class="cls-1" x1="260.1" y1="81.52" x2="272.78" y2="81.52"/>
+    <text class="cls-2" transform="translate(-4.96 231.3)"><tspan x="0" y="0">DEE</tspan><tspan class="cls-3" x="131.99" y="0">P</tspan><tspan x="172.84" y="0">CH</tspan><tspan class="cls-4" x="271.71" y="0">E</tspan><tspan x="310.22" y="0">CK</tspan></text>
+  </g>
+</svg>

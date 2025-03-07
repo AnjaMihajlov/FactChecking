@@ -1,177 +1,257 @@
-{% extends 'base.html' %}
-
-{% block title %}
-About the Project
-{% endblock %}
-
-{% block content %}
-     <div class="about-container">
-        <!-- Transcription Section -->
-        <section class="about-section">
-            <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-                    <path d="M16 4h-8c-2.21 0-4 1.79-4 4v8c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4v-8c0-2.21-1.79-4-4-4zm2 12c0 1.1-.9 2-2 2h-8c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8z"/>
-                </svg>
-                <h2>Transcription</h2>
-            </div>
-            <p class="section-description">
-                Naš tim za transkripciju je posvećen razvoju naprednih algoritama za pretvaranje govora u tekst, sa posebnim fokusom na srpski jezik i njegove specifičnosti. Koristeći najnovije tehnologije mašinskog učenja i veštačke inteligencije, razvijamo sisteme koji mogu precizno prepoznati i transkribovati govor iz različitih izvora, uključujući medijske sadržaje, javne govore i intervjue. Naš cilj je da stvorimo robustan sistem koji može efikasno raditi sa različitim akcentima, dijalektima i stilovima govora, omogućavajući brzu i preciznu transkripciju za dalju analizu.
-            </p>
-            <div class="team-members">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Senior Developer</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">ML Engineer</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Data Scientist</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Backend Developer</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FactCheck Section -->
-        <section class="about-section">
-            <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-                <h2>FactCheck</h2>
-            </div>
-            <p class="section-description">
-                Tim za proveru činjenica razvija sofisticirane sisteme za automatsku verifikaciju informacija koji kombinuju napredne tehnike obrade prirodnog jezika sa opsežnim bazama podataka. Naš pristup uključuje analizu tekstualnog sadržaja, pretragu relevantnih izvora informacija i automatsku procenu verodostojnosti tvrdnji. Posebnu pažnju posvećujemo razvoju algoritama koji mogu prepoznati kontekst izjava, identifikovati potencijalne dezinformacije i pružiti jasne reference ka pouzdanim izvorima. Kroz integraciju sa različitim bazama podataka i arhivama, omogućavamo brzu i preciznu proveru činjenica u realnom vremenu.
-            </p>
-            <div class="team-members">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Lead Developer</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">AI Researcher</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Data Engineer</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Frontend Developer</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Consistency Check Section -->
-        <section class="about-section">
-            <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/>
-                    <path d="M9 10h6v2H9z"/>
-                    <path d="M9 14h6v2H9z"/>
-                </svg>
-                <h2>Consistency Check</h2>
-            </div>
-            <p class="section-description">
-                Naš tim za proveru konzistentnosti razvija inovativne metode za dubinsku analizu tekstualnog sadržaja, sa fokusom na otkrivanje logičkih nekonzistentnosti i kontradikcija. Primenjujemo napredne algoritme mašinskog učenja i tehnike obrade prirodnog jezika kako bismo identifikovali suptilne neslaganja u dokumentima, analizirali vremenske sekvence događaja i proveravali međusobnu usklađenost različitih izjava. Sistem koji razvijamo može automatski detektovati potencijalne probleme u konzistentnosti teksta, pružajući detaljan izveštaj o pronađenim neusaglašenostima i predlažući moguća rešenja.
-            </p>
-            <div class="team-members">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">System Architect</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">ML Specialist</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Data Analyst</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Full Stack Developer</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mentorstvo Section -->
-        <section class="about-section">
-            <div class="section-header">
-                <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <h2>Mentorstvo</h2>
-            </div>
-            <p class="section-description">
-                Mentorski tim čine iskusni stručnjaci iz oblasti veštačke inteligencije, obrade prirodnog jezika i razvoja softvera, koji pružaju neprocenjivu podršku i smernice u razvoju projekta. Sa dugogodišnjim iskustvom u akademskom i industrijskom sektoru, naši mentori aktivno učestvuju u oblikovanju arhitekture sistema, optimizaciji performansi i implementaciji najboljih praksi u razvoju AI rešenja. Njihovo znanje i ekspertiza su ključni za uspešnu realizaciju projekta i kontinuirano unapređenje naših sistema za obradu i analizu teksta.
-            </p>
-            <div class="team-members">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Senior Mentor</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Technical Advisor</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="placeholder.jpg" alt="Team Member">
-                    </div>
-                    <h3 class="member-name">Ime Prezime</h3>
-                    <p class="member-role">Project Lead</p>
-                </div>
-            </div>
-        </section>
+{% extends 'base.html' %} {% load static %} {% block title %} About the Project
+{% endblock %} {% block content %}
+<div class="about-container">
+  <!-- Transcription Section -->
+  <section class="about-section">
+    <div class="section-header">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11V7Z"
+          stroke="black"
+          stroke-width="2"
+          class="my-path"
+        ></path>
+        <path
+          d="M20 10V11C20 15.4183 16.4183 19 12 19C7.58172 19 4 15.4183 4 11V10"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+        <path
+          d="M12 19V22"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+        <path
+          d="M7 7H10"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+        <path
+          d="M17 7H14"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+        <path
+          d="M7 11H10"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+        <path
+          d="M17 11H14"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="my-path"
+        ></path>
+      </svg>
+      <h2>Transcription</h2>
     </div>
+    <p class="section-description">
+      Naš tim za transkripciju je posvećen razvoju naprednih algoritama za
+      pretvaranje govora u tekst, sa posebnim fokusom na srpski jezik i njegove
+      specifičnosti. Koristeći najnovije tehnologije mašinskog učenja i veštačke
+      inteligencije, razvijamo sisteme koji mogu precizno prepoznati i
+      transkribovati govor iz različitih izvora, uključujući medijske sadržaje,
+      javne govore i intervjue. Naš cilj je da stvorimo robustan sistem koji
+      može efikasno raditi sa različitim akcentima, dijalektima i stilovima
+      govora, omogućavajući brzu i preciznu transkripciju za dalju analizu.
+    </p>
+    <div class="team-members">
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Senior Developer</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">ML Engineer</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Data Scientist</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Backend Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FactCheck Section -->
+  <section class="about-section">
+    <div class="section-header">
+      <img
+        src="{% static 'images/fact_check.svg' %}"
+        width="24px"
+        height="24px"
+        alt=""
+      />
+      <h2>FactCheck</h2>
+    </div>
+    <p class="section-description">
+      Tim za proveru činjenica razvija sofisticirane sisteme za automatsku
+      verifikaciju informacija koji kombinuju napredne tehnike obrade prirodnog
+      jezika sa opsežnim bazama podataka. Naš pristup uključuje analizu
+      tekstualnog sadržaja, pretragu relevantnih izvora informacija i automatsku
+      procenu verodostojnosti tvrdnji. Posebnu pažnju posvećujemo razvoju
+      algoritama koji mogu prepoznati kontekst izjava, identifikovati
+      potencijalne dezinformacije i pružiti jasne reference ka pouzdanim
+      izvorima. Kroz integraciju sa različitim bazama podataka i arhivama,
+      omogućavamo brzu i preciznu proveru činjenica u realnom vremenu.
+    </p>
+    <div class="team-members">
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Lead Developer</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">AI Researcher</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Data Engineer</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Frontend Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consistency Check Section -->
+  <section class="about-section">
+    <div class="section-header">
+      <img
+        src="{% static 'images/consistent.svg' %}"
+        alt=""
+        srcset=""
+        width="24px"
+        height="24px"
+      />
+      <h2>Consistency Check</h2>
+    </div>
+    <p class="section-description">
+      Naš tim za proveru kontradiktornosti razvija sistem koji pomoću naprednih tehnika veštačke inteligencije omogućava sledeće:<br>-analizu novih tvrdnji u odnosu na postojeće formacije u bazi,<br>-identifikaciju neslaganja i<br>-pretragu relevantnih podataka.<br>Sistem je optimizovan za rad sa transkribovanim tekstovima na srpskom jeziku, omogućavajući precizno i fikasno otkrivanje neslaganja u velikim skupovima podataka. Izlaz sistema je csv format koji za svaki analizirani deo sadrži dodatno objašnjenje pronadjene kontradiktornosti uz izvornu referencu ili naznaku da nema nekonzistentnosti.<br><span class="font-wight-800">Tehnologije koje koristimo:</span><br>-Backend: Python<br>-Baza podataka: FAISS za vektorsku pretragu i trenutno lokalna baza za dodatne informacije<br>-Modeli: Cohere embeddings, claude-3-haiku za klasifikaciju , LlamaIndex za obradu podataka</p>
+
+    <div class="team-members">
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">System Architect</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">ML Specialist</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Data Analyst</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Full Stack Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentorstvo Section -->
+  <section class="about-section">
+    <div class="section-header">
+      <img
+        src="{% static 'images/mentoring.svg'%}"
+        width="24px"
+        height="24px"
+        alt=""
+      />
+      <h2>Mentorstvo</h2>
+    </div>
+    <p class="section-description">
+      Mentorski tim čine iskusni stručnjaci iz oblasti veštačke inteligencije,
+      obrade prirodnog jezika i razvoja softvera, koji pružaju neprocenjivu
+      podršku i smernice u razvoju projekta. Sa dugogodišnjim iskustvom u
+      akademskom i industrijskom sektoru, naši mentori aktivno učestvuju u
+      oblikovanju arhitekture sistema, optimizaciji performansi i implementaciji
+      najboljih praksi u razvoju AI rešenja. Njihovo znanje i ekspertiza su
+      ključni za uspešnu realizaciju projekta i kontinuirano unapređenje naših
+      sistema za obradu i analizu teksta.
+    </p>
+    <div class="team-members">
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Senior Mentor</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Technical Advisor</p>
+      </div>
+      <div class="team-member">
+        <div class="member-image">
+          <img alt="Team Member" />
+        </div>
+        <h3 class="member-name">Ime Prezime</h3>
+        <p class="member-role">Project Lead</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js'%}"></script>
 {% endblock %}
