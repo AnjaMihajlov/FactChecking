@@ -9,7 +9,7 @@ import csv
 # =======================
 # Configuration Constants
 # =======================
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 SERPAPI_API_KEY = "8706f4a156d896f21f6b0a8073730312a235dafbe17df1538530b055377ae9d9"
 JINA_API_KEY = "jina_00b9f446343e4fb882ae966a4d6b2938rgwSI3s0w3nygZ2A4p3xkfOWnf1v"
@@ -20,8 +20,8 @@ SERPAPI_URL = "https://serpapi.com/search"
 JINA_BASE_URL = "https://r.jina.ai/"
 
 # Default LLM model (can be changed if desired)
-DEFAULT_MODEL = "anthropic/claude-3.7-sonnet"
-# DEFAULT_MODEL = "openai/gpt-4o-2024-11-20"
+#DEFAULT_MODEL = "anthropic/claude-3.7-sonnet"
+DEFAULT_MODEL = "openai/gpt-4o-2024-11-20"
 # DEFAULT_MODEL = "gpt-3.5-turbo"
 
 
@@ -41,11 +41,11 @@ SPEECH_FILE_NAME= "govor_vucic_sm.txt"     # Change SPEECH_FILE_NAME when readin
 PATH_TO_SPEECH_FILE = PATH_SPEECH + SPEECH_FILE_NAME
 
 PATH_DATA = ".\\data\\"     
-CSV_FILE_NAME = "data_sm.csv"                 # Change CSV_FILE_NAME when writing a new one
+CSV_FILE_NAME = "data_base.csv"                 # Change CSV_FILE_NAME when writing a new one
 PATH_TO_CSV_FILE = PATH_DATA + CSV_FILE_NAME
 
 PATH_PRECISION = ".\\precision\\"
-LOG_FILE_NAME = "precision_log.txt"                  # Don't change
+LOG_FILE_NAME = "confusion_matrix.csv"                  # Don't change
 PATH_TO_LOG_FILE = PATH_PRECISION + LOG_FILE_NAME
 
 PATH_QUESTIONS = ".\\questions\\"
@@ -566,16 +566,36 @@ def write_answers_csv(csv_filename, log_filename, data, rows, links_used, right_
         - links_used (List[str]): A list of links used for each query.
     """
     counterPrecision=0
+    TP, FP, TN, FN = 0, 0, 0, 0
     for i, value in enumerate(data):
         rows[i][ANSWER_INDEX] = value
         rows[i][RIGHT_ANSWER_INDEX] = str(right_answers[i])
         rows[i][RIGHT_ANSWER_INDEX] = right_answers[i].replace(", ", "").strip()
         
-        if (rows[i][ANSWER_INDEX] == rows[i][EXPECTED_INDEX]):
+        """if (rows[i][ANSWER_INDEX] == rows[i][EXPECTED_INDEX]):
             rows[i][PRECISION_INDEX] = 1
             counterPrecision+=1
         else:
+            rows[i][PRECISION_INDEX] = 0"""
+
+        if rows[i][ANSWER_INDEX] == "Da" and rows[i][EXPECTED_INDEX]=="Da":
+            rows[i][PRECISION_INDEX] = 1
+            counterPrecision += 1
+            TP += 1
+
+        if rows[i][ANSWER_INDEX] == "Da" and rows[i][EXPECTED_INDEX]=="Ne":
             rows[i][PRECISION_INDEX] = 0
+            FP += 1
+
+        if rows[i][ANSWER_INDEX] == "Ne" and rows[i][EXPECTED_INDEX]=="Ne":
+            rows[i][PRECISION_INDEX] = 1
+            counterPrecision += 1
+            TN += 1
+
+        if rows[i][ANSWER_INDEX] == "Ne" and rows[i][EXPECTED_INDEX]=="Da":
+            rows[i][PRECISION_INDEX] = 0
+            FN += 1
+
 
         rows[i][LINKS_INDEX] = links_used[i][1:-1]      # Slicing from 1 to -1 because the first and last characters are ", so we slice them to get only links
 
@@ -587,17 +607,26 @@ def write_answers_csv(csv_filename, log_filename, data, rows, links_used, right_
 
     accuracy_percentage = counterPrecision/len(rows)*100
 
-    # Write to log file
-    with open(log_filename, "a", encoding="utf-8") as logfile:
+    with open(log_filename, mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
+
+        # Upisujemo zaglavlja
+        writer.writerow(["TP", "FP", "TN", "FN", "Precision"])
+
+        # Upisujemo vrednosti
+        writer.writerow([TP, FP, TN, FN, round(accuracy_percentage, 4)])  # Precision zaokružujemo na 4 decimale
+"""
+    #with open(log_filename, "a", encoding="utf-8") as logfile:
         logfile.write(f"{datetime.datetime.now()}: {accuracy_percentage:.2f}%\n")
 
     print(f"Accuracy percentage ({accuracy_percentage:.2f}%) writen into {log_filename}.")
-       
+"""
+
 
 def main():
-    text = read_file_text(PATH_TO_SPEECH_FILE)
-    res = asyncio.run(asyncio_extract_questions(text))
-    write_questions_csv(PATH_TO_CSV_FILE,res)
+    #text = read_file_text(PATH_TO_SPEECH_FILE)
+    #res = asyncio.run(asyncio_extract_questions(text))
+    #write_questions_csv(PATH_TO_CSV_FILE,res)
 
     input_file, queries = read_file_csv(PATH_TO_CSV_FILE)
     results, links_used, right_answers = asyncio.run(process_queries(queries))
